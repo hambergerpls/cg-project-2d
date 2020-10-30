@@ -6,9 +6,9 @@ This project is for KT34303 - Computer Graphics course of Universiti Malaysia Sa
 ## Team
 - Lee Kim Hao
 - Tan Mei Jun
-- Mohd Nizam Bin Nordin
+- Nizam Bin Nordin
 - Kennedy Gregory Mojuntin
-- Ahmad Farhan Bin Zaki
+- Ahmad Farhan Bin Ahmad Zaki
 - Muhammad Danial Aiman Bin Mohd Hanif
 
 ## Setting up the project
