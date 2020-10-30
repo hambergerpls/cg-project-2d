@@ -54,9 +54,8 @@ $ sudo apt get install freeglut3-dev
 
 ### Cloning this repo
 To clone this repo, create a project folder anywhere you want.
-Open command prompt and navigate to that folder by entering your project directory path
+Open command prompt or terminal in that folder and run the following command
 ```cmd
-cd C:\<Your Project Directory>
 git clone https://github.com/screamingDanana/cg-project-2d.git
 ```
 The above command should clone this repo to your desired directory.
@@ -97,3 +96,6 @@ Your program field in launch.json should look like this
 ...
 ```
 After that, save the file and press `F5`, the program should run.
+
+## License
+This project is licensed under [MIT License](LICENSE)
