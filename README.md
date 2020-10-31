@@ -45,7 +45,7 @@ The package freeglut is compatible with built-in CMake targets:
 ```
 
 ### Linux
-#### Setting up the C++ compiler for VS Code
+#### Setting up the C++ compiler for VS Code and install FreeGLUT
 On Linux, the library installation is straight forward. Make sure you installed `build-essential` to install the required compilers and development libraries. Use your package manager to install FreeGLUT library `freeglut3-dev`
 ```sh
 $ sudo apt get update
@@ -60,6 +60,8 @@ Open command prompt or terminal in that folder and run the following command
 > git clone https://github.com/screamingDanana/cg-project-2d.git
 ```
 The above command should clone this repo to your desired directory.
+
+Or just download this repo as zip and extract it to your desired location.
 
 ### Setting up VS Code workspace
 Open up Visual Studio Code and install the following extensions from the marketplace
