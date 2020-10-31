@@ -23,16 +23,16 @@ You can follow this guide (just follow the Prerequisite 1-3) (https://code.visua
 #### Setting up vcpkg library manager to install FreeGLUT
 After you installed cmake and git, open the command prompt and type the following command to install `vcpkg`
 ```cmd
-cd C:\ 
-git clone https://github.com/microsoft/vcpkg
+> cd C:\ 
+> git clone https://github.com/microsoft/vcpkg
 ```
 The above command should install vcpkg to `C:\vcpkg`. Then type the following command
-```
-.\vcpkg\bootstrap-vcpkg.bat
+```cmd
+> .\vcpkg\bootstrap-vcpkg.bat
 ```
 This will set up the necesssary configuration. Finally, install the FreeGLUT library with the following command
-```
-.\vcpkg\vcpkg install freeglut
+```cmd
+> .\vcpkg\vcpkg install freeglut
 ```
 This will take a while, you will know the process is finished if the command prompt shows the following:
 ```
@@ -43,6 +43,7 @@ The package freeglut is compatible with built-in CMake targets:
     target_link_libraries(main PRIVATE GLUT::GLUT)
 ...
 ```
+
 ### Linux
 #### Setting up the C++ compiler for VS Code
 On Linux, the library installation is straight forward. Make sure you installed `build-essential` to install the required compilers and development libraries. Use your package manager to install FreeGLUT library `freeglut3-dev`
@@ -56,7 +57,7 @@ $ sudo apt get install freeglut3-dev
 To clone this repo, create a project folder anywhere you want.
 Open command prompt or terminal in that folder and run the following command
 ```cmd
-git clone https://github.com/screamingDanana/cg-project-2d.git
+> git clone https://github.com/screamingDanana/cg-project-2d.git
 ```
 The above command should clone this repo to your desired directory.
 
