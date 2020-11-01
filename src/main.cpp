@@ -56,7 +56,7 @@ void house(double x, double y, double w) {
 	double h = w * (2.0 / 3.0);
 
 	// draw body
-	glColor3ub(200, 50, 0);
+	glColor3ub(0, 50, 0);
 	rectangle(x, y, w, h);
 
 	// draw door
