@@ -82,7 +82,7 @@ Press `F7` to compile the program. This should create the executable `opengl_pro
 Change the `"program"` field to `"${workspaceFolder}/build/<path to opengl_program.exe>"` you can look for the executable inside the build folder (should be in Debug)
 
 Your program field in launch.json should look like this
-```
+```json
 ...
 "program": "${workspaceFolder}/build/Debug/opengl_program.exe"
 ...
@@ -93,7 +93,7 @@ After that, save the file and press `F5`, the program should run.
 Change the `"program"` field to `"${workspaceFolder}/build/opengl_program"`
 
 Your program field in launch.json should look like this
-```
+```json
 ...
 "program": "${workspaceFolder}/build/opengl_program"
 ...
