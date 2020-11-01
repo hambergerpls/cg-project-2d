@@ -13,14 +13,15 @@ This project is for KT34303 - Computer Graphics course of Universiti Malaysia Sa
 
 ## Setting up the project
 ### Requirements
+- [Build Tools for Visual Studio 2019](https://visualstudio.microsoft.com/)
 - [Visual Studio Code](https://code.visualstudio.com/) as our coding environment and setup.
 - [CMake](https://cmake.org/download/) as our cross-platform configuration tool.
 - [git](https://git-scm.com/downloads) is a **must** for development.
 
 ### Windows
-#### Setting up the C++ compiler for VS Code
-You can follow this guide (just follow the Prerequisite 1-3) (https://code.visualstudio.com/docs/cpp/config-msvc) on how to install the required C++ compiler.
-#### Setting up vcpkg library manager to install FreeGLUT
+#### Setting up the Build Tools for VS Code
+You can follow this guide on how to install Build Tools(just follow the Prerequisite 1-3) (https://code.visualstudio.com/docs/cpp/config-msvc) on how to install the required C++ compiler.
+#### Setting up vcpkg library manager to install FreeGLUT and OpenGL libraries
 After you installed cmake and git, open the command prompt and type the following command to install `vcpkg`
 ```cmd
 > cd C:\ 
@@ -32,7 +33,8 @@ The above command should install vcpkg to `C:\vcpkg`. Then type the following co
 ```
 This will set up the necesssary configuration. Finally, install the FreeGLUT library with the following command
 ```cmd
-> .\vcpkg\vcpkg install freeglut
+> .\vcpkg\vcpkg install opengl:x64-windows
+> .\vcpkg\vcpkg install freeglut:x64-windows
 ```
 This will take a while, you will know the process is finished if the command prompt shows the following:
 ```
