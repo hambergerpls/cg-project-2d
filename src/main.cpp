@@ -1,9 +1,16 @@
-#include <windows.h>
+
 #include <stdlib.h>
 #include <math.h>
+#ifdef _WIN32 //windows header location
 #include <gl/freeglut.h>
 #include <gl/GLU.h>
 #include <gl/GL.h>
+#endif
+#ifdef linux //linux header location
+#include <GL/freeglut.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+#endif
 #include <time.h>
 
 #define SCREEN_WIDTH 800
