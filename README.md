@@ -75,18 +75,18 @@ Next, go to `File>Open Folder...` then select the folder that you have just clon
 
 Press `Ctrl+Shift+P` to open vscode command pallete and type `cmake`. You should see `CMake: Configure` in the list, select it.
 
-Next, it should list all the available compilers on your computer. For **Windows**, it should show a list like `Microsoft Visual Studio 2019 x86_64` or something along the lines. Select the one with `x86_64` compiler. On **Linux**, select the latest GCC Compiler. It should automatically detect `CMakeList.txt` and configure the project.
+Next, it should list all the available compilers on your computer. For **Windows**, it should show a list like `Microsoft Visual Studio Build Tools 2019 x86_64` or something along the lines. Select the one with `x86_64` compiler. On **Linux**, select the latest GCC Compiler. It should automatically detect `CMakeList.txt` and configure the project.
 
 ### Configuring launch task
-Press `F7` to compile the program. This should create the executable `opengl_program.exe` for Windows or `opengl_program` for Linux.
+Make sure at the bottom it says `Cmake: [Release]: Ready`. If not, click on it and select `"Release"` Press `F7` to compile the program. This should create the executable `opengl_program.exe` for Windows or `opengl_program` for Linux.
 
 **For Windows**: Press `F5` and select `C++ (Windows)`. A launch.json configuration file should open.
-Change the `"program"` field to `"${workspaceFolder}/build/<path to opengl_program.exe>"` you can look for the executable inside the build folder (should be in Debug)
+Change the `"program"` field to `"${workspaceFolder}/build/Release/opengl_program.exe"` you can look for the executable inside the build folder (should be in Release)
 
 Your program field in launch.json should look like this
 ```json
 ...
-"program": "${workspaceFolder}/build/Debug/opengl_program.exe"
+"program": "${workspaceFolder}/build/Release/opengl_program.exe"
 ...
 ```
 After that, save the file and press `F5`, the program should run.
