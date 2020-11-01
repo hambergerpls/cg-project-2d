@@ -17,6 +17,7 @@ This project is for KT34303 - Computer Graphics course of Universiti Malaysia Sa
 - [Visual Studio Code](https://code.visualstudio.com/) as our coding environment and setup.
 - [CMake](https://cmake.org/download/) as our cross-platform configuration tool.
 - [git](https://git-scm.com/downloads) is a **must** for development.
+- [vcpkg](https://github.com/microsoft/vcpkg) as our library manager
 
 ### Windows
 #### Setting up the Build Tools for VS Code
@@ -25,13 +26,13 @@ You can follow this guide on how to install Build Tools(just follow the Prerequi
 After you installed cmake and git, open the command prompt and type the following command to install `vcpkg`
 ```cmd
 > cd C:\ 
-> git clone https://github.com/microsoft/vcpkg
+> git clone https://github.com/microsoft/vcpkg.git
 ```
 The above command should install vcpkg to `C:\vcpkg`. Then type the following command
 ```cmd
 > .\vcpkg\bootstrap-vcpkg.bat
 ```
-This will set up the necessary configuration. Finally, install the FreeGLUT library with the following command
+This will set up the necessary configuration. Finally, install the FreeGLUT and OpenGL library with the following command
 ```cmd
 > .\vcpkg\vcpkg install opengl:x64-windows
 > .\vcpkg\vcpkg install freeglut:x64-windows
