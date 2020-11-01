@@ -31,7 +31,7 @@ The above command should install vcpkg to `C:\vcpkg`. Then type the following co
 ```cmd
 > .\vcpkg\bootstrap-vcpkg.bat
 ```
-This will set up the necesssary configuration. Finally, install the FreeGLUT library with the following command
+This will set up the necessary configuration. Finally, install the FreeGLUT library with the following command
 ```cmd
 > .\vcpkg\vcpkg install opengl:x64-windows
 > .\vcpkg\vcpkg install freeglut:x64-windows
