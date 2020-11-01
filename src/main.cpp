@@ -1,8 +1,9 @@
+#include <windows.h>
 #include <stdlib.h>
 #include <math.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/freeglut.h>
+#include <gl/freeglut.h>
+#include <gl/GLU.h>
+#include <gl/GL.h>
 #include <time.h>
 
 #define SCREEN_WIDTH 800
@@ -24,6 +25,7 @@ void nGon(int x, int y, int r, int n) {
 	glEnd();
 }
 
+#ifdef linux
 double GetTickCount(void) 
 {
   struct timespec now;
@@ -31,8 +33,9 @@ double GetTickCount(void)
     return 0;
   return now.tv_sec * 1000.0 + now.tv_nsec / 1000000.0;
 }
+#endif
 
-void rectangle(int x, int y, int w, int h) {
+void rectangle(double x, double y, double w, double h) {
 	glBegin(GL_POLYGON);
 		glVertex2d(x, y);
 		glVertex2d(x+w, y);
@@ -41,7 +44,7 @@ void rectangle(int x, int y, int w, int h) {
 	glEnd();
 }
 
-void house(int x, int y, int w) {
+void house(double x, double y, double w) {
 
 	double h = w * (2.0 / 3.0);
 
@@ -112,11 +115,12 @@ int main(int argc, char** argv) {
 	glutInitDisplayMode(GLUT_DOUBLE);
 	glutInit(&argc, argv);
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	glutCreateWindow("our program ☭");
+	glutCreateWindow("our program \u262d");
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
 	initGL();
 	glutMainLoop();
 }
-
+#ifdef linux
 double GetTickCount(void);
+#endif
