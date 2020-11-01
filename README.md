@@ -13,7 +13,7 @@ This project is for KT34303 - Computer Graphics course of Universiti Malaysia Sa
 
 ## Setting up the project
 ### Requirements
-- [Build Tools for Visual Studio 2019](https://visualstudio.microsoft.com/)
+- [Build Tools for Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - [Visual Studio Code](https://code.visualstudio.com/) as our coding environment and setup.
 - [CMake](https://cmake.org/download/) as our cross-platform configuration tool.
 - [git](https://git-scm.com/downloads) is a **must** for development.
