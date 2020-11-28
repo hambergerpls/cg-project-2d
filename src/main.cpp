@@ -99,8 +99,6 @@ void display() {
 void idle() {
 	
 	unsigned int start = GetTickCount();
-	while (GetTickCount() - start < 1000 / FPS) {}; //start shows undefined in intellisense but we have already defined it above, ignore it.
-
 
 	X += dx;
 	Y += dy;
