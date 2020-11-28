@@ -13,10 +13,11 @@ This project is for KT34303 - Computer Graphics course of Universiti Malaysia Sa
 
 ## Setting up the project
 ### Requirements
-- [Build Tools for Visual Studio 2019](https://visualstudio.microsoft.com/)
+- [Build Tools for Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - [Visual Studio Code](https://code.visualstudio.com/) as our coding environment and setup.
 - [CMake](https://cmake.org/download/) as our cross-platform configuration tool.
 - [git](https://git-scm.com/downloads) is a **must** for development.
+- [vcpkg](https://github.com/microsoft/vcpkg) as our library manager
 
 ### Windows
 #### Setting up the Build Tools for VS Code
@@ -25,13 +26,13 @@ You can follow this guide on how to install Build Tools(just follow the Prerequi
 After you installed cmake and git, open the command prompt and type the following command to install `vcpkg`
 ```cmd
 > cd C:\ 
-> git clone https://github.com/microsoft/vcpkg
+> git clone https://github.com/microsoft/vcpkg.git
 ```
 The above command should install vcpkg to `C:\vcpkg`. Then type the following command
 ```cmd
 > .\vcpkg\bootstrap-vcpkg.bat
 ```
-This will set up the necesssary configuration. Finally, install the FreeGLUT library with the following command
+This will set up the necessary configuration. Finally, install the FreeGLUT and OpenGL library with the following command
 ```cmd
 > .\vcpkg\vcpkg install opengl:x64-windows
 > .\vcpkg\vcpkg install freeglut:x64-windows
@@ -75,18 +76,18 @@ Next, go to `File>Open Folder...` then select the folder that you have just clon
 
 Press `Ctrl+Shift+P` to open vscode command pallete and type `cmake`. You should see `CMake: Configure` in the list, select it.
 
-Next, it should list all the available compilers on your computer. For **Windows**, it should show a list like `Microsoft Visual Studio 2019 x86_64` or something along the lines. Select the one with `x86_64` compiler. On **Linux**, select the latest GCC Compiler. It should automatically detect `CMakeList.txt` and configure the project.
+Next, it should list all the available compilers on your computer. For **Windows**, it should show a list like `Microsoft Visual Studio Build Tools 2019 x86_64` or something along the lines. Select the one with `x86_64` compiler. On **Linux**, select the latest GCC Compiler. It should automatically detect `CMakeList.txt` and configure the project.
 
 ### Configuring launch task
-Press `F7` to compile the program. This should create the executable `opengl_program.exe` for Windows or `opengl_program` for Linux.
+Make sure at the bottom it says `Cmake: [Release]: Ready`. If not, click on it and select `"Release"` Press `F7` to compile the program. This should create the executable `opengl_program.exe` for Windows or `opengl_program` for Linux.
 
 **For Windows**: Press `F5` and select `C++ (Windows)`. A launch.json configuration file should open.
-Change the `"program"` field to `"${workspaceFolder}/build/<path to opengl_program.exe>"` you can look for the executable inside the build folder (should be in Debug)
+Change the `"program"` field to `"${workspaceFolder}/build/Release/opengl_program.exe"` you can look for the executable inside the build folder (should be in Release)
 
 Your program field in launch.json should look like this
 ```json
 ...
-"program": "${workspaceFolder}/build/Debug/opengl_program.exe"
+"program": "${workspaceFolder}/build/Release/opengl_program.exe"
 ...
 ```
 After that, save the file and press `F5`, the program should run.
