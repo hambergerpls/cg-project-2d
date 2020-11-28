@@ -18,10 +18,10 @@
 #define PI 3.1415926535897932384626433832795
 #define FPS 30
 
-int X = 0;
-int Y = 0;
-int dx = 5;
-int dy = 6;
+double X = 0;
+double Y = 0;
+double dx = 2.5;
+double dy = 3.0;
 
 void nGon(int x, int y, int r, int n) {
 	double inc = (2 * PI) / n;
