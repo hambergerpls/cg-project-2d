@@ -13,8 +13,8 @@
 #endif
 #include <time.h>
 
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 800
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
 #define PI 3.1415926535897932384626433832795
 #define FPS 30
 
