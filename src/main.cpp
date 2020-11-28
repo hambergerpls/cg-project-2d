@@ -116,19 +116,19 @@ void idle() {
 }
 
 void initGL() {
-	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClearColor(0.0, 0.0, 0.0, 0.0);//set background to black
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT);
 }
 
 int main(int argc, char** argv) {
-	glutInitDisplayMode(GLUT_DOUBLE);
-	glutInit(&argc, argv);
-	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	glutCreateWindow("our program \u262d");
-	glutDisplayFunc(display);
-	glutIdleFunc(idle);
+	glutInit(&argc, argv);//initialise glut library
+	glutInitDisplayMode(GLUT_DOUBLE);//set displaymode to double buffered window
+	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);//set window size
+	glutCreateWindow("our program \u262d");//set window name
+	glutDisplayFunc(display);//callback function, redraw when window is updated
+	glutIdleFunc(idle);//execute idle function when there is no user input
 	initGL();
 	glutMainLoop();
 }
