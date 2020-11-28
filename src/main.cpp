@@ -16,7 +16,7 @@
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 #define PI 3.1415926535897932384626433832795
-#define FPS 30
+#define FPS 60
 
 double X = 0;
 double Y = 0;
