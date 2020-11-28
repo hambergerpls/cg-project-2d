@@ -13,15 +13,15 @@
 #endif
 #include <time.h>
 
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 800
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
 #define PI 3.1415926535897932384626433832795
-#define FPS 30
+#define FPS 60
 
-int X = 0;
-int Y = 0;
-int dx = 5;
-int dy = 6;
+double X = 0;
+double Y = 0;
+double dx = 2.5;
+double dy = 3.0;
 
 void nGon(int x, int y, int r, int n) {
 	double inc = (2 * PI) / n;
@@ -99,8 +99,6 @@ void display() {
 void idle() {
 	
 	unsigned int start = GetTickCount();
-	while (GetTickCount() - start < 1000 / FPS) {}; //start shows undefined in intellisense but we have already defined it above, ignore it.
-
 
 	X += dx;
 	Y += dy;
@@ -108,23 +106,27 @@ void idle() {
 	if (X<0 || X > SCREEN_WIDTH) dx *= -1;
 	if (Y<0 || Y > SCREEN_HEIGHT) dy *= -1;
 
+	//while (GetTickCount() - start < 1000 / FPS) {}; 
+	/*start shows undefined in intellisense but we have already defined it above, ignore it.
+	this while function is being used to limit the FPS to the defined FPS value.
+	*/
 	glutPostRedisplay();
 }
 
 void initGL() {
-	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClearColor(0.0, 0.0, 0.0, 0.0);//set background to black
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT);
 }
 
 int main(int argc, char** argv) {
-	glutInitDisplayMode(GLUT_DOUBLE);
-	glutInit(&argc, argv);
-	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	glutCreateWindow("our program \u262d");
-	glutDisplayFunc(display);
-	glutIdleFunc(idle);
+	glutInit(&argc, argv);//initialise glut library
+	glutInitDisplayMode(GLUT_DOUBLE);//set displaymode to double buffered window
+	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);//set window size
+	glutCreateWindow("our program \u262d");//set window name
+	glutDisplayFunc(display);//callback function, redraw when window is updated
+	glutIdleFunc(idle);//execute idle function when there is no user input
 	initGL();
 	glutMainLoop();
 }
