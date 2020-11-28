@@ -108,6 +108,10 @@ void idle() {
 	if (X<0 || X > SCREEN_WIDTH) dx *= -1;
 	if (Y<0 || Y > SCREEN_HEIGHT) dy *= -1;
 
+	//while (GetTickCount() - start < 1000 / FPS) {}; 
+	/*start shows undefined in intellisense but we have already defined it above, ignore it.
+	this while function is being used to limit the FPS to the defined FPS value.
+	*/
 	glutPostRedisplay();
 }
 
