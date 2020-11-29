@@ -47,17 +47,6 @@ Scenes Global Variables
 Drawing tools
 ========================
  */
-void nGon(int x, int y, int r, int n)
-{
-	double inc = (2 * PI) / n;
-	glBegin(GL_POLYGON);
-	for (double theta = 0.0; theta <= 2 * PI; theta += inc)
-	{
-		glVertex2d(r * cos(theta) + x, r * sin(theta) + y);
-	}
-	glEnd();
-}
-
 void rectangle(double x, double y, double w, double h)
 {
 	glBegin(GL_POLYGON);
@@ -328,29 +317,57 @@ void deadBody(double x, double y, double w)
 
 	//blood
 	glColor3ub(230, 0, 0);
-	EllipsePoly(x + 100, y - 80, 32.0, 100.0, 2, 3);
+	EllipsePoly(100, 50, 64.0, 100.0, 3, 2);
 
 	// draw body of dead blue
 	glColor3ub(0, 0, 230);
-	rectangle(x, y, w * 1.8, h * 2.0); //w & h are the sizes for the rectangle
+	rectangle(0, 0, w * 1.8, h * 2.0); //w & h are the sizes for the rectangle
 	glColor3ub(0, 0, 230);
-	nGon(x, y - 32, 33.0, 100.0);
+	EllipsePoly(0, 70, 33.0, 100.0, 1.5, 2);
 	glColor3ub(230, 0, 0);
-	nGon(x, y - 32, 20.0, 100.0);
+	EllipsePoly(0, 70, 20.0, 100.0, 1.5, 2.0);
 	glColor3ub(255, 255, 255);
-	rectangle(x - 70, y + 60, w * 0.7, h * 0.4); //w & h are the sizes for the rectangle
+	rectangle(0 - 70, 0 + 60, w * 0.7, h * 0.4); //w & h are the sizes for the rectangle
 
 	// draw bone triangle
 	glColor3ub(255, 255, 255);
 	glBegin(GL_POLYGON);
-	glVertex2d(x - 55, y + 72);
-	glVertex2d(x - 95, y + 96);
-	glVertex2d(x - 95, y + 48);
+	glVertex2d(0 - 55, 0 + 72);
+	glVertex2d(0 - 95, 0 + 96);
+	glVertex2d(0 - 95, 0 + 48);
 	glEnd();
 
 	//bloody rectangle
 	glColor3ub(230, 0, 0);
-	rectangle(x + 5, y, w * 0.22, h * 1.0); //w& h are the sizes for the rectangle
+	rectangle(0 + 5, 0, w * 0.22, h * 1.0); //w& h are the sizes for the rectangle
+}
+
+void deadBodyGreen(double x, double y, double w)
+{
+
+	double h = w * (2.0 / 3.0);
+
+	// draw body of dead green
+	glColor3ub(17, 127, 45);
+	rectangle(0, 0, w * 1.8, h * 2.0); //w & h are the sizes for the rectangle
+	glColor3ub(17, 127, 45);
+	EllipsePoly(0, 70, 33.0, 100.0, 1.5, 2);
+	glColor3ub(230, 0, 0);
+	EllipsePoly(0, 70, 20.0, 100.0, 1.5, 2.0);
+	glColor3ub(255, 255, 255);
+	rectangle(0 - 70, 0 + 60, w * 0.7, h * 0.4); //w & h are the sizes for the rectangle
+
+	// draw bone triangle
+	glColor3ub(255, 255, 255);
+	glBegin(GL_POLYGON);
+	glVertex2d(0 - 55, 0 + 72);
+	glVertex2d(0 - 95, 0 + 96);
+	glVertex2d(0 - 95, 0 + 48);
+	glEnd();
+
+	//bloody rectangle
+	glColor3ub(230, 0, 0);
+	rectangle(0 + 5, 0, w * 0.22, h * 1.0); //w& h are the sizes for the rectangle
 }
 
 void stars()
@@ -538,7 +555,7 @@ void scene_2()
 		glVertex2d(600, 450);
 		glEnd();
 		glColor3ub(255, 255, 255);
-		nGon(600, 475, 10, 32);
+		EllipsePoly(600, 475, 10, 32, 1, 1);
 		glPopMatrix();
 
 		//BLUE
@@ -603,7 +620,7 @@ void scene_3()
 	glVertex2d(600, 450);
 	glEnd();
 	glColor3ub(255, 255, 255);
-	nGon(600, 475, 10, 32);
+	EllipsePoly(600, 475, 10, 32, 1, 1);
 
 	glPopMatrix();
 	/* glBegin(GL_POLYGON);
@@ -723,31 +740,36 @@ void scene_4()
 			glColor3ub(255, 255, 255);
 			if (frame < 1260)
 			{
-				
-			renderSpacedBitmapString(350, 640, GLUT_BITMAP_HELVETICA_18, "Oh hi Red");
+
+				renderSpacedBitmapString(350, 640, GLUT_BITMAP_HELVETICA_18, "Oh hi Red");
 			}
-			
 
 			if (frame > 1260)
 			{
 				//red
 				glPushMatrix();
-				glTranslated(1000-(frame-1260), 150, 0);
+				glTranslated(1000 - (frame - 1260), 150, 0);
 				glScaled(-10, 10, 0);
 				crew(0, 0, 197, 17, 17, 0, 1);
-				glColor3ub(128,128,128);
+				glColor3ub(128, 128, 128);
 				glBegin(GL_POLYGON);
-				glVertex2d(5+10*sin(frame*0.5),10);
-				glVertex2d(-45+10*sin(frame*0.5),10);
-				glVertex2d(-45+10*sin(frame*0.5),30);
+				glVertex2d(5 + 10 * sin(frame * 0.5), 10);
+				glVertex2d(-45 + 10 * sin(frame * 0.5), 10);
+				glVertex2d(-45 + 10 * sin(frame * 0.5), 30);
 				glEnd();
 				glPopMatrix();
 
 				glColor3ub(255, 255, 255);
 				renderSpacedBitmapString(350, 640, GLUT_BITMAP_HELVETICA_18, "HEY WHAT U DOIN?!");
 
-				glColor4ub(255,0,0,255*(frame-1260)/240);
-				rectangle(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
+				//BLUE
+				glPushMatrix();
+				glScaled(10, 10, 0);
+				crew(0, 0, 19, 46, 209, 0, 0);
+				glPopMatrix();
+
+				glColor4ub(255, 0, 0, 255 * (frame - 1260) / 240);
+				rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 			}
 		}
 	}
@@ -755,42 +777,379 @@ void scene_4()
 void scene_5()
 {
 	glPushMatrix();
-	glTranslated(SCREEN_WIDTH/2, SCREEN_HEIGHT/2,0);
+	glTranslated(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
 	deadBody(0, 0, 100);
 	glPopMatrix();
 
-	ghost(3*SCREEN_WIDTH/4, SCREEN_HEIGHT/2 + 200, 19, 46, 209, 1);
+	ghost(3 * SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 + 50 * sin(0.05 * frame), 19, 46, 209, 1);
 }
+
+double scene6_scrollX = 0;
+
 void scene_6()
 {
+	glPushMatrix();
+	glTranslated(-scene2_scrollX, 0, 0);
+	//Background
+	glColor3ub(91, 106, 109);
+	rectangle(0, 0, SCREEN_WIDTH + 200, SCREEN_HEIGHT);
+
+	//floor
+	glColor3ub(121, 136, 139);
+	rectangle(0, 0, SCREEN_WIDTH + 200, 100);
+
+	//door
+	glColor3ub(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2d(850, 100);
+	glVertex2d(1100, 100);
+	glVertex2d(1100, 300);
+	glVertex2d(850, 300);
+	glEnd();
+
+	//artwork
+	glColor3ub(188, 121, 57);
+	rectangle(450, 300, 300, 200); //frame
+	glColor3ub(83, 148, 192);
+	rectangle(460, 310, 280, 180); //sky
+	glColor3ub(126, 203, 44);
+	rectangle(460, 310, 280, 120); //grass
+	glColor3ub(29, 34, 40);
+	rectangle(460, 320, 280, 20);
+	glColor3ub(128, 128, 128); //moutain
+	glBegin(GL_POLYGON);
+	glVertex2d(500, 400);
+	glVertex2d(600, 400);
+	glVertex2d(550, 450);
+	glEnd();
+	glColor3ub(128, 128, 128); //moutain
+	glBegin(GL_POLYGON);
+	glVertex2d(550, 400);
+	glVertex2d(650, 400);
+	glVertex2d(600, 450);
+	glEnd();
+	glColor3ub(255, 255, 255);
+	EllipsePoly(600, 475, 10, 32, 1, 1);
+
+	glPopMatrix();
+
+	if (frame < 1960)
+	{
+		//Yellow
+		glPushMatrix();
+		glTranslated(5 * scene6_scrollX, 150, 0);
+		crew(0, 0, 245, 245, 87, 1, 1);
+		glPopMatrix();
+		scene6_scrollX++;
+	}
+	else
+	{
+		glPushMatrix();
+		glTranslated(5 * scene6_scrollX, 150, 0);
+		crew(0, 0, 245, 245, 87, 0, 1);
+		glPopMatrix();
+
+		if (frame > 1990)
+		{
+			renderSpacedBitmapString(1000, 360, GLUT_BITMAP_HELVETICA_18, "Hm, I wonder where Blue is...");
+		}
+	}
+
+	//Red
+	glPushMatrix();
+	glTranslated(1000 + 5 * scene6_scrollX, 150, 0);
+	crew(0, 0, 197, 17, 17, 1, 1);
+	glPopMatrix();
+
+	//blue ghost
+	ghost(3 * SCREEN_WIDTH / 4, 150 + 25 * sin(0.05 * frame), 19, 46, 209, 1);
 }
+
+double scene7_translateX = 0;
+
 void scene_7()
 {
+	glPushMatrix();
+	glTranslated(-scene2_scrollX, 0, 0);
+	//Background
+	glColor3ub(91, 106, 109);
+	rectangle(0, 0, SCREEN_WIDTH + 200, SCREEN_HEIGHT);
+
+	//floor
+	glColor3ub(121, 136, 139);
+	rectangle(0, 0, SCREEN_WIDTH + 200, 100);
+
+	//door
+	glColor3ub(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2d(850, 100);
+	glVertex2d(1100, 100);
+	glVertex2d(1100, 300);
+	glVertex2d(850, 300);
+	glEnd();
+
+	//artwork
+	glColor3ub(188, 121, 57);
+	rectangle(450, 300, 300, 200); //frame
+	glColor3ub(83, 148, 192);
+	rectangle(460, 310, 280, 180); //sky
+	glColor3ub(126, 203, 44);
+	rectangle(460, 310, 280, 120); //grass
+	glColor3ub(29, 34, 40);
+	rectangle(460, 320, 280, 20);
+	glColor3ub(128, 128, 128); //moutain
+	glBegin(GL_POLYGON);
+	glVertex2d(500, 400);
+	glVertex2d(600, 400);
+	glVertex2d(550, 450);
+	glEnd();
+	glColor3ub(128, 128, 128); //moutain
+	glBegin(GL_POLYGON);
+	glVertex2d(550, 400);
+	glVertex2d(650, 400);
+	glVertex2d(600, 450);
+	glEnd();
+	glColor3ub(255, 255, 255);
+	EllipsePoly(600, 475, 10, 32, 1, 1);
+
+	glPopMatrix();
+
+	//Yellow
+	glPushMatrix();
+	glTranslated(5 * scene6_scrollX, 150, 0);
+	crew(0, 0, 245, 245, 87, 0, 1);
+	glPopMatrix();
+
+	if (frame < 2160)
+	{
+		//Green
+		glPushMatrix();
+		glTranslated(SCREEN_WIDTH - 5 * scene7_translateX, 150, 0);
+		glScaled(-1, 1, 1);
+		crew(0, 0, 17, 127, 45, 1, 1);
+		glPopMatrix();
+		scene7_translateX++;
+	}
+	else
+	{
+		//green
+		glPushMatrix();
+		glTranslated(5 * scene6_scrollX + 150, 150, 0);
+		glScaled(-1, 1, 1);
+		crew(0, 0, 17, 127, 45, 0, 1);
+		glPopMatrix();
+	}
+
+	if (frame >= 2160 && frame < 2220)
+	{
+		glColor3ub(255, 255, 255);
+		renderSpacedBitmapString(900, 360, GLUT_BITMAP_HELVETICA_18, "Hey, Yellow? Have you seen Blue?");
+	}
+	if (frame >= 2220 && frame < 2340)
+	{
+		glColor3ub(245, 245, 87);
+		renderSpacedBitmapString(600, 360, GLUT_BITMAP_HELVETICA_18, "No, The power was out just now, maybe he is in electrical?");
+	}
+
+	//Red
+	glPushMatrix();
+	glTranslated(1000 + 5 * scene6_scrollX, 150, 0);
+	crew(0, 0, 197, 17, 17, 1, 1);
+	glPopMatrix();
+
+	//blue ghost
+	ghost(3 * SCREEN_WIDTH / 4, 150 + 25 * sin(0.05 * frame), 19, 46, 209, 1);
 }
 void scene_8()
 {
+
+	glPushMatrix();
+	glTranslated(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 - 100, 0);
+	deadBody(0, 0, 100);
+	glPopMatrix();
+	ghost(3 * SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 + 50 * sin(0.05 * frame), 19, 46, 209, 1);
+
+	//yellow
+	glPushMatrix();
+	glTranslated(400, 400, 0);
+	crew(0, 0, 245, 245, 87, 0, 1);
+	glPopMatrix();
+
+	//green
+	glPushMatrix();
+	glTranslated(800, 400, 0);
+	glScaled(-1, 1, 1);
+	crew(0, 0, 17, 127, 45, 0, 1);
+	glPopMatrix();
+
+	if (frame > 2520)
+	{
+		glColor3ub(245, 245, 87);
+		renderSpacedBitmapString(400, 500, GLUT_BITMAP_HELVETICA_18, "NOOO BLUEE!!!!!");
+	}
+	if (frame > 2580)
+	{
+		glColor3ub(255, 255, 255);
+		renderSpacedBitmapString(700, 450, GLUT_BITMAP_HELVETICA_18, "WE HAVE TO CONDUCT EMERGENCY MEETING RIGHT NOW!");
+	}
 }
+
+double scene9_translationX = 0;
+double scene9_RedtranslationX = 0;
+double scene9_translationY = 0;
+
 void scene_9()
 {
 
+	//yellow
+	glPushMatrix();
+	glTranslated(400, 150, 0);
+	glScaled(2, 2, 1);
+	crew(0, 0, 245, 245, 87, 0, 1);
+	glPopMatrix();
+
+	if (frame < 2760)
+	{
+		//green
+		glPushMatrix();
+		glTranslated(800 - scene9_translationX, 150, 0);
+		glScaled(-2, 2, 1);
+		crew(0, 0, 17, 127, 45, 0, 1);
+		glPopMatrix();
+		scene9_translationX++;
+	}
+	else
+	{
+		//green
+		glPushMatrix();
+		glTranslated(800 - scene9_translationX, 150, 0);
+		glScaled(-2, 2, 1);
+		crew(0, 0, 17, 127, 45, 0, 1);
+		glPopMatrix();
+
+		if (frame < 2790)
+		{
+			//hand press
+			glPushMatrix();
+			glTranslated(770 - scene9_translationX - 50, 270 - 2 * scene9_translationY, 0);
+			glColor3ub(17, 127, 45);
+			EllipsePoly(0, 0, 10, 30, 1, 1);
+			glPopMatrix();
+			scene9_translationY++;
+		}
+	}
+
 	table(SCREEN_WIDTH / 2, 50, 300);
 	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 500);
+
+	if ((frame >= 2790 && frame < 2910) && frame % 30 == 0)
+	{
+		glColor4ub(255, 0, 0, 128);
+		rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	}
+
+	if ((frame >= 2910 && frame < 2970))
+	{
+		//red
+		glPushMatrix();
+		glTranslated(SCREEN_WIDTH - 5 * scene9_RedtranslationX, 150, 0);
+		glScaled(-2, 2, 1);
+		crew(0, 0, 197, 17, 17, 0, 1);
+		glPopMatrix();
+		scene9_RedtranslationX++;
+	}
+	if (frame >= 2970 && frame < 3090)
+	{
+		//red
+		glColor3ub(197, 17, 17);
+		renderSpacedBitmapString(1000, 450, GLUT_BITMAP_HELVETICA_18, "Yellow killed red.");
+	}
+	if (frame >= 3090 && frame < 3150)
+	{
+		glColor3ub(245, 245, 87);
+		renderSpacedBitmapString(400, 450, GLUT_BITMAP_HELVETICA_18, "What? NO! I was with Green!");
+	}
+	if (frame >= 3150 && frame < 3210)
+	{
+		glColor3ub(197, 17, 17);
+		renderSpacedBitmapString(900, 450, GLUT_BITMAP_HELVETICA_18, "That's what an imposter would say.");
+	}
+	if (frame >= 3210 && frame < 3270)
+	{
+		glColor3ub(17, 127, 45);
+		renderSpacedBitmapString(600, 450, GLUT_BITMAP_HELVETICA_18, "Hm, true.");
+	}
+
+	if (frame > 2910)
+	{
+		//red
+		glPushMatrix();
+		glTranslated(SCREEN_WIDTH - 5 * scene9_RedtranslationX, 150, 0);
+		glScaled(-2, 2, 1);
+		crew(0, 0, 197, 17, 17, 0, 1);
+		glPopMatrix();
+	}
+
 	// draw floor
 	glColor3ub(155, 155, 155);
 	rectangle(0, 0, SCREEN_WIDTH, 50);
 }
 void scene_10()
 {
+	//stars
+	glPushMatrix();
+	glTranslated(0 + 0.5*(frame-3300), 0, 0);
+	stars();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(0 + frame-3300, 0, 0);
+	spaceship(640,360);
+	glPopMatrix();
+
+	//YELLOW
+	glPushMatrix();
+	glTranslated(SCREEN_WIDTH -3 * (frame-3300), 360, 0);
+	glRotated((frame-3300)*10, 0, 0, 1.0);
+	crew(0, 0, 245, 245, 87, 0, 1);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslated(SCREEN_WIDTH+250 -3 * (frame-3300), 360, 0);
+	glRotated((frame-3300)*10, 0, 0, 1.0);
+	deadBodyGreen(0,0,50);
+	glPopMatrix();
+
+	if(frame < 3420){
+		glColor3ub(255,255,255);
+		renderSpacedBitmapString(640, 360, GLUT_BITMAP_HELVETICA_18, "Yellow and Green were ejected from the ship.");
+	}
+
+
+	
+
 }
+double scene11_fade = 0;
+double scene11_fadeEffect = 0;
 void scene_11()
 {
 
 	imposter(SCREEN_WIDTH / 2, 50);
 	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 500);
 	//ghost(SCREEN_WIDTH / 2, 0);
-	// draw floor
-	glColor3ub(155, 155, 155);
-	rectangle(0, 0, SCREEN_WIDTH, 50);
+
+	glColor4ub(0, 0, 0, 256 - scene11_fade);
+	rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	
+	glPushMatrix();
+	glTranslated(SCREEN_WIDTH / 2, 360, 0);
+	glScaled(1 + 0.01 * (frame-3600), 1 + 0.01 * (frame-3600), 0);
+	glColor3ub(255, 0, 0);
+	renderSpacedBitmapString(-120, 0, GLUT_BITMAP_HELVETICA_18, "\"TO BE CONTINUED ?\"");
+	glPopMatrix();
+
+	scene11_fadeEffect += 0.1;
+	scene11_fade = -(scene11_fadeEffect * scene11_fadeEffect) + 256;
 }
 
 /* 
