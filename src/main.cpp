@@ -65,7 +65,7 @@ void victory(double x, double y)
 {
 
 	// draw spotlight
-	glColor3ub(255, 248, 220);
+	glColor4ub(255, 248, 220, 128);
 	glBegin(GL_POLYGON);
 	glVertex2d(x - 150, y - 100);
 	glVertex2d(x + 150, y - 100);
