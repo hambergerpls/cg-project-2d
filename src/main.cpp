@@ -419,29 +419,29 @@ void scene_1()
 	//RED
 	glPushMatrix();
 	glTranslated(SCREEN_WIDTH - 500 - scene1_scrollX, 350 + scene1_scrollX, 0);
-	glRotated(-rotationX, 0, 0, 1.0);
-	crew(0, 0, 197, 17, 17);
+	glRotated(-scene1_rotationX, 0, 0, 1.0);
+	crew(0, 0, 197, 17, 17, 0);
 	glPopMatrix();
 
 	//GREEN
 	glPushMatrix();
 	glTranslated(250 + scene1_scrollX, 400, 0);
-	glRotated(rotationX, 0, 0, 1.0);
-	crew(0, 0, 17, 127, 45);
+	glRotated(scene1_rotationX, 0, 0, 1.0);
+	crew(0, 0, 17, 127, 45, 0);
 	glPopMatrix();
 
 	//BLUE
 	glPushMatrix();
 	glTranslated(640 - scene1_scrollX, 350 + scene1_scrollX, 0);
-	glRotated(rotationX, 0, 0, 1.0);
-	crew(0, 0, 19, 46, 209);
+	glRotated(scene1_rotationX, 0, 0, 1.0);
+	crew(0, 0, 19, 46, 209, 0);
 	glPopMatrix();
 
 	//YELLOW
 	glPushMatrix();
 	glTranslated(0 + 3 * scene1_scrollX, scene1_scrollX, 0);
-	glRotated(rotationX, 0, 0, 1.0);
-	crew(0, 0, 245, 245, 87);
+	glRotated(scene1_rotationX, 0, 0, 1.0);
+	crew(0, 0, 245, 245, 87, 0);
 	glPopMatrix();
 
 	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 500);
