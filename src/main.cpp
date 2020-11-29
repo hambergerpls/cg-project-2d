@@ -343,6 +343,25 @@ void deadBody(double x, double y, double w) {
 
 }
 
+void stars(){
+
+	glBegin(GL_POINTS);
+	glColor3ub(255, 255, 255);
+	glVertex2i(150, 600);
+	glVertex2i(300, 450);
+	glVertex2i(450, 550);
+	glVertex2i(600, 150);
+	glVertex2i(750, 250);
+	glVertex2i(900, 500);
+	glVertex2i(-30, 300);
+	glVertex2i(1000, 400);
+	glVertex2i(-20, 250);
+	glVertex2i(-40, 480);
+	glVertex2i(-20, 640);
+	glEnd();
+
+}
+
 /* 
 ========================
 Objects
@@ -365,20 +384,7 @@ void scene_1()
 	//stars
 	glPushMatrix();
 	glTranslated(scene1_scrollX, 0, 0);
-	glBegin(GL_POINTS);
-	glColor3ub(255, 255, 255);
-	glVertex2i(150, 600);
-	glVertex2i(300, 450);
-	glVertex2i(450, 550);
-	glVertex2i(600, 150);
-	glVertex2i(750, 250);
-	glVertex2i(900, 500);
-	glVertex2i(-30, 300);
-	glVertex2i(1000, 400);
-	glVertex2i(-20, 250);
-	glVertex2i(-40, 480);
-	glVertex2i(-20, 640);
-	glEnd();
+	stars();
 	glPopMatrix();
 
 	crew(SCREEN_WIDTH / 3 + 50, 120, 197, 17, 17);	 //RED
