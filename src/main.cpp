@@ -100,6 +100,9 @@ void ghost(double x, double y)
 	//draw ghost inner halo
 	glColor3ub(0, 0, 0);
 	EllipsePoly(x -150, SCREEN_HEIGHT/2 + 70, 8.0, 200.0, 4.0, 1.5);
+	//make transparent
+	glColor4ub(0, 0, 0, 128);
+	EllipsePoly(x - 150, SCREEN_HEIGHT/2-20, 60, 100, 1.5, 2.0);
 
 //RED GHOST
 	// draw ghost tail
@@ -121,6 +124,8 @@ void ghost(double x, double y)
 	//draw ghost inner halo
 	glColor3ub(0, 0, 0);
 	EllipsePoly(x + 150, SCREEN_HEIGHT/2 + 70, 8.0, 200.0, 4.0, 1.5);
+	glColor4ub(0, 0, 0, 128);
+	EllipsePoly(x + 150, SCREEN_HEIGHT/2-20, 60, 100, 1.5, 2.0);
 
 	
 }
@@ -130,8 +135,8 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPointSize(10.0);
 
-	victory(SCREEN_WIDTH / 2, 0);
 	ghost(SCREEN_WIDTH/2, 0);
+	victory(SCREEN_WIDTH / 2, 0);
 
 	glFlush();
 	glutSwapBuffers();
