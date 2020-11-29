@@ -68,7 +68,71 @@ Objects
 ========================
  */
 
+void electricalBox(double x, double y, double w)
+{
 
+	double h = w * (2.0 / 3.0);
+	//
+	// draw body (outer rectangle)
+	glColor3ub(100, 100, 100);
+	rectangle(x - 10, y - 10, w * 3.7, h * 3.8); //w & h are the sizes for the rectangle
+
+	// draw body (inner rectangle)
+	glColor3ub(160, 160, 160);
+	rectangle(x, y, w * 3.5, h * 3.5); //w & h are the sizes for the rectangle
+
+	//WIRES//
+	// draw red wire
+	glColor3ub(204, 0, 0);
+	rectangle(x + 20, y + 67 + w * (135.0 / 100.0), w * 3.1, w * (0.8 / 9.0));
+	// draw yellow wire
+	glColor3ub(255, 204, 0);
+	rectangle(x + 20, y + 6.8 + w * (135.0 / 100.0), w * 3.1, w * (0.8 / 9.0));
+
+	//draw pink wire
+	glColor3ub(240, 21, 124);
+	glLineWidth(6.0);
+	line(x + 20, y + 25, 320.0, 65.0);
+
+	//draw blue wire
+	glColor3ub(0, 102, 255);
+	glLineWidth(6.0);
+	line(x + 20, y + 85, 320.0, -60.0);
+
+	//LEFT SOCKETS//
+	// draw left socket (most bottom)
+	glColor3ub(255, 0, 255);
+	rectangle(x + w * 0, y + w * (15.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
+
+	// draw left socket (2nd most bottom)
+	glColor3ub(0, 255, 255);
+	rectangle(x + w * 0, y + w * (75.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
+
+	// draw left socket (3rd most bottom)
+	glColor3ub(255, 255, 0);
+	rectangle(x + w * 0, y + w * (135.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
+
+	// draw left socket (most top)
+	glColor3ub(255, 0, 0);
+	rectangle(x + w * 0, y + w * (195.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
+
+	//RIGHT SOCKETS//
+	// draw right socket (most bottom)
+	glColor3ub(0, 255, 255);
+	rectangle(x + w * 3.28, y + w * (15.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
+
+	// draw right socket (2nd most bottom)
+	glColor3ub(255, 0, 255);
+	rectangle(x + w * 3.28, y + w * (75.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
+
+	// draw right socket (3rd most bottom)
+	glColor3ub(255, 255, 0);
+	rectangle(x + w * 3.28, y + w * (135.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
+
+	// draw right socket (most top)
+	glColor3ub(255, 0, 0);
+	rectangle(x + w * 3.28, y + w * (195.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
+}
 
 
 
