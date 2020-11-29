@@ -18,10 +18,10 @@
 #define PI 3.1415926535897932384626433832795
 #define FPS 60
 
-double X = 0;
-double Y = 0;
-double dx = 2.5;
-double dy = 3.0;
+int X = 0;
+int Y = 0;
+int dx = 50;
+int dy = 60;
 
 void EllipsePoly(double x, double y, double r, int n, double a, double b)
 {
@@ -30,26 +30,34 @@ void EllipsePoly(double x, double y, double r, int n, double a, double b)
 	for (double theta = 0.0; theta <= 2 * PI; theta += inc)
 	{
 		glVertex2d(r * cos(theta) * a + x, r * sin(theta) * b + y);
-		}
+	}
 	glEnd();
 }
 
 #ifdef linux
-double GetTickCount(void) 
+double GetTickCount(void)
 {
-  struct timespec now;
-  if (clock_gettime(CLOCK_MONOTONIC, &now))
-    return 0;
-  return now.tv_sec * 1000.0 + now.tv_nsec / 1000000.0;
+	struct timespec now;
+	if (clock_gettime(CLOCK_MONOTONIC, &now))
+		return 0;
+	return now.tv_sec * 1000.0 + now.tv_nsec / 1000000.0;
 }
 #endif
 
-void rectangle(double x, double y, double w, double h) {
+void rectangle(double x, double y, double w, double h)
+{
 	glBegin(GL_POLYGON);
-		glVertex2d(x, y);
-		glVertex2d(x+w, y);
-		glVertex2d(x+w, y+h);
-		glVertex2d(x, y+h);
+	glVertex2d(x, y);
+	glVertex2d(x + w, y);
+	glVertex2d(x + w, y + h);
+	glVertex2d(x, y + h);
+	glEnd();
+}
+void line(int x, int y, int w, int h)
+{
+	glBegin(GL_LINES);
+	glVertex2f(x, y);
+	glVertex2f(x + w, y + h);
 	glEnd();
 }
 
@@ -129,40 +137,44 @@ void display()
 	glutSwapBuffers();
 }
 
-void idle() {
-	
+/* void idle()
+{
+
 	unsigned int start = GetTickCount();
 
 	X += dx;
 	Y += dy;
 
-	if (X<0 || X > SCREEN_WIDTH) dx *= -1;
-	if (Y<0 || Y > SCREEN_HEIGHT) dy *= -1;
+	if (X < 0 || X > SCREEN_WIDTH)
+		dx *= -1;
+	if (Y < 0 || Y > SCREEN_HEIGHT)
+		dy *= -1;
 
-	//while (GetTickCount() - start < 1000 / FPS) {}; 
+	//while (GetTickCount() - start < 1000 / FPS) {};
 	/*start shows undefined in intellisense but we have already defined it above, ignore it.
 	this while function is being used to limit the FPS to the defined FPS value.
-	*/
+	
 	glutPostRedisplay();
-}
+} */
 
-void initGL() {
-	glClearColor(0.0, 0.0, 0.0, 0.0);//set background to black
+void initGL()
+{
+	glClearColor(0.0, 0.0, 0.0, 0.0); //set background to black
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT);
 }
 
-int main(int argc, char** argv) {
-	glutInit(&argc, argv);//initialise glut library
-	glutInitDisplayMode(GLUT_DOUBLE);//set displaymode to double buffered window
-	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);//set window size
-	glutCreateWindow("our program \u262d");//set window name
-	glutDisplayFunc(display);//callback function, redraw when window is updated
-	glutIdleFunc(idle);//execute idle function when there is no user input
+int main(int argc, char **argv)
+{
+	glutInit(&argc, argv);							 //initialise glut library
+	glutInitDisplayMode(GLUT_DOUBLE);				 //set displaymode to double buffered window
+	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT); //set window size
+	glutCreateWindow("our program \u262d");			 //set window name
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable( GL_BLEND );
+	glutDisplayFunc(display);						 //callback function, redraw when window is updated
+	//glutIdleFunc(idle);								 //execute idle function when there is no user input
 	initGL();
 	glutMainLoop();
 }
-#ifdef linux
-double GetTickCount(void);
-#endif
