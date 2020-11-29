@@ -277,6 +277,21 @@ void imposter(double x, double y)
 	EllipsePoly(x+25, SCREEN_HEIGHT/2 - 185 +y, 15, 20, 1.5, 2.0);
 }
 
+void crew(double x, double y, int R, int G, int B){
+	
+	//draw right leg
+	glColor4ub(R, G, B, 224);
+	rectangle(x + 0, y - 30, 30, -40);
+	//draw body
+	glColor3ub(R, G, B);
+	EllipsePoly(x, y, 30, 100, 1.5, 2.0);
+	//draw eyes
+	glColor3ub(255, 255, 255);
+	EllipsePoly(x+25, y+15, 15.0, 100, 2.0, 1.5);
+	//draw left leg
+	glColor3ub(R, G, B);
+	rectangle(x - 40, y - 30, 30, -40);
+}
 /* 
 ========================
 Objects
