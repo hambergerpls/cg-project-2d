@@ -153,7 +153,7 @@ void ghost(double x, double y)
 
 void winner(double x, double y)
 {
-	
+
 	//RED crewmate
 	//draw  body
 	glColor3ub(255, 0, 0);
@@ -174,7 +174,8 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPointSize(10.0);
 
-	ghost(SCREEN_WIDTH/2, 0);
+	ghost(SCREEN_WIDTH / 2, 0);
+	winner(SCREEN_WIDTH / 2, -95);
 	victory(SCREEN_WIDTH / 2, 0);
 
 	glFlush();
@@ -216,8 +217,8 @@ int main(int argc, char **argv)
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT); //set window size
 	glutCreateWindow("our program \u262d");			 //set window name
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable( GL_BLEND );
-	glutDisplayFunc(display);						 //callback function, redraw when window is updated
+	glEnable(GL_BLEND);
+	glutDisplayFunc(display); //callback function, redraw when window is updated
 	//glutIdleFunc(idle);								 //execute idle function when there is no user input
 	initGL();
 	glutMainLoop();
