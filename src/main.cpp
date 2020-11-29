@@ -70,41 +70,60 @@ void victory(double x, double y)
 	rectangle(x - SCREEN_WIDTH / 2, y, SCREEN_WIDTH, 50);
 }
 
+void ghost(double x, double y)
+{
+	//BLUE GHOST
+	// draw ghost tail
+	glColor3ub(0, 200, 255);
+	glBegin(GL_POLYGON);
+	glVertex2d(x-150, SCREEN_HEIGHT/2 - 80);
+	glVertex2d(x-200, SCREEN_HEIGHT/2 - 80);
+	glVertex2d(x-150, SCREEN_HEIGHT/2 + 50 - 80);
+	glEnd();
+	//draw ghost body
+	glColor3ub(0, 200, 255);
 	EllipsePoly(x - 150, SCREEN_HEIGHT/2-20, 30, 100, 1.5, 2.0);
+	//draw ghost eyes
+	glColor3ub(255, 255, 255);
 	EllipsePoly(x - 125, SCREEN_HEIGHT/2, 15.0, 100, 2.0, 1.5);
+	//draw ghost outer halo
+	glColor3ub(255, 255, 0);
 	EllipsePoly(x -150, SCREEN_HEIGHT/2 + 70, 10.0, 200.0, 4.0, 1.5);
+	//draw ghost inner halo
+	glColor3ub(0, 0, 0);
 	EllipsePoly(x -150, SCREEN_HEIGHT/2 + 70, 8.0, 200.0, 4.0, 1.5);
 
-	// draw left window
-	glColor3ub(50, 250, 255);
-	rectangle(x + w * 0.125, y + w * (2.0 / 6.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
-
-	// draw right window
-	glColor3ub(50, 250, 255);
-	rectangle(x + w - (w * 0.125) - w * (2.0 / 9.0), y + w * (2.0 / 6.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
-
-	// draw roof
-	glColor3ub(0, 250, 15);
+//RED GHOST
+	// draw ghost tail
+	glColor3ub(255, 0, 0);
 	glBegin(GL_POLYGON);
-		glVertex2d(x-(w/6.0), y+h);
-		glVertex2d(x + w + (w / 6.0), y+h);
-		glVertex2d(x + w, y + h + (h/3.0));
-		glVertex2d(x, y + h + (h / 3.0));
+	glVertex2d(x+150, SCREEN_HEIGHT/2 - 80);
+	glVertex2d(x+200, SCREEN_HEIGHT/2 - 80);
+	glVertex2d(x+150, SCREEN_HEIGHT/2 + 50 - 80);
 	glEnd();
+	//draw ghost body
+	glColor3ub(255, 0, 0);
 	EllipsePoly(x + 150, SCREEN_HEIGHT/2-20, 30, 100, 1.5, 2.0);
+	//draw ghost eyes
+	glColor3ub(255, 255, 255);
 	EllipsePoly(x + 125, SCREEN_HEIGHT/2, 15.0, 100, 2.0, 1.5);
+	//draw ghost outer halo
+	glColor3ub(255, 255, 0);
 	EllipsePoly(x + 150, SCREEN_HEIGHT/2 + 70, 10.0, 200.0, 4.0, 1.5);
+	//draw ghost inner halo
+	glColor3ub(0, 0, 0);
 	EllipsePoly(x + 150, SCREEN_HEIGHT/2 + 70, 8.0, 200.0, 4.0, 1.5);
 
+	
 }
 
-
-
-void display() {
+void display()
+{
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPointSize(10.0);
 
 	victory(SCREEN_WIDTH / 2, 0);
+	ghost(SCREEN_WIDTH/2, 0);
 
 	glFlush();
 	glutSwapBuffers();
