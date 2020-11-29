@@ -266,7 +266,7 @@ void imposter(double x, double y)
 	EllipsePoly(x + 25, SCREEN_HEIGHT / 2 - 185 + y, 15, 20, 1.5, 2.0);
 }
 
-void crew(double x, double y, int R, int G, int B, int anim)
+void crew(double x, double y, int R, int G, int B, int anim, int front)
 {
 	//draw right leg
 	if (anim == 1)
@@ -285,14 +285,29 @@ void crew(double x, double y, int R, int G, int B, int anim)
 		glColor4ub(R, G, B, 224);
 		rectangle(0, -30, 30, -40);
 	}
-	//draw body
-	glColor3ub(R, G, B);
-	EllipsePoly(0, 0, 30, 100, 1.5, 2.0);
-	//draw eyes
-	glColor3ub(0, 0, 0);
-	EllipsePoly(25, 15, 15.0, 100, 2.0, 1.5);
-	glColor3ub(255, 255, 255);
-	EllipsePoly(25, 15, 13.0, 100, 2.0, 1.5);
+	if (front == 1)
+	{
+		//draw body
+		glColor3ub(R, G, B);
+		EllipsePoly(0, 0, 30, 100, 1.5, 2.0);
+		//draw eyes
+		glColor3ub(0, 0, 0);
+		EllipsePoly(25, 15, 15.0, 100, 2.0, 1.5);
+		glColor3ub(255, 255, 255);
+		EllipsePoly(25, 15, 13.0, 100, 2.0, 1.5);
+	}
+	else
+	{
+		//draw eyes
+		glColor3ub(0, 0, 0);
+		EllipsePoly(25, 15, 15.0, 100, 2.0, 1.5);
+		glColor3ub(255, 255, 255);
+		EllipsePoly(25, 15, 13.0, 100, 2.0, 1.5);
+		//draw body
+		glColor3ub(R, G, B);
+		EllipsePoly(0, 0, 30, 100, 1.5, 2.0);
+	}
+
 	//draw left leg
 	if (anim == 1)
 	{
@@ -420,28 +435,28 @@ void scene_1()
 	glPushMatrix();
 	glTranslated(SCREEN_WIDTH - 500 - scene1_scrollX, 350 + scene1_scrollX, 0);
 	glRotated(-scene1_rotationX, 0, 0, 1.0);
-	crew(0, 0, 197, 17, 17, 0);
+	crew(0, 0, 197, 17, 17, 0, 1);
 	glPopMatrix();
 
 	//GREEN
 	glPushMatrix();
 	glTranslated(250 + scene1_scrollX, 400, 0);
 	glRotated(scene1_rotationX, 0, 0, 1.0);
-	crew(0, 0, 17, 127, 45, 0);
+	crew(0, 0, 17, 127, 45, 0, 1);
 	glPopMatrix();
 
 	//BLUE
 	glPushMatrix();
 	glTranslated(640 - scene1_scrollX, 350 + scene1_scrollX, 0);
 	glRotated(scene1_rotationX, 0, 0, 1.0);
-	crew(0, 0, 19, 46, 209, 0);
+	crew(0, 0, 19, 46, 209, 0, 1);
 	glPopMatrix();
 
 	//YELLOW
 	glPushMatrix();
 	glTranslated(0 + 3 * scene1_scrollX, scene1_scrollX, 0);
 	glRotated(scene1_rotationX, 0, 0, 1.0);
-	crew(0, 0, 245, 245, 87, 0);
+	crew(0, 0, 245, 245, 87, 0, 1);
 	glPopMatrix();
 
 	glPushMatrix();
@@ -455,9 +470,7 @@ void scene_1()
 	renderSpacedBitmapString(SCREEN_WIDTH / 12, 110, GLUT_BITMAP_HELVETICA_18, "GROUP 17");
 	glColor4ub(0, 0, 0, 256 - scene1_fade);
 	rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-	// draw floor
-	glColor3ub(155, 155, 155);
-	rectangle(0, 0, SCREEN_WIDTH, 50);
+
 	scene1_scrollX++;
 	scene1_fadeEffect += 0.1;
 	scene1_fade = -(scene1_fadeEffect * scene1_fadeEffect) + 256;
@@ -485,6 +498,7 @@ void scene_2()
 		scene2_translateX += 0.5;
 
 		renderSpacedBitmapString(SCREEN_WIDTH / 2 - 100, 360, GLUT_BITMAP_HELVETICA_18, "Spaceship -->");
+		renderSpacedBitmapString(SCREEN_WIDTH / 12, 130, GLUT_BITMAP_HELVETICA_18, "10 thousand chromosomes in the future");
 	}
 	else if (frame == 420)
 	{
@@ -540,7 +554,7 @@ void scene_2()
 		//BLUE
 		glPushMatrix();
 		glTranslated(5 * scene2_scrollX, 150, 0);
-		crew(0, 0, 19, 46, 209, 1);
+		crew(0, 0, 19, 46, 209, 1, 1);
 		glPopMatrix();
 		scene2_scrollX++;
 
@@ -612,7 +626,7 @@ void scene_3()
 	//BLUE
 	glPushMatrix();
 	glTranslated(5 * scene2_scrollX, 150, 0);
-	crew(0, 0, 19, 46, 209, 0);
+	crew(0, 0, 19, 46, 209, 0, 1);
 	glPopMatrix();
 
 	//dark
@@ -633,6 +647,120 @@ void scene_3()
 void scene_4()
 {
 	electricalBox(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 100);
+	//BLUE
+	glPushMatrix();
+	if (frame < 960)
+	{
+		glTranslated(0 + 1 * frame - 900, 150, 0);
+	}
+	glScaled(10, 10, 0);
+	crew(0, 0, 19, 46, 209, 0, 0);
+	glPopMatrix();
+
+	if (frame >= 960 && frame < 1020)
+	{
+
+		glColor3ub(255, 255, 255);
+		renderSpacedBitmapString(350, 640, GLUT_BITMAP_HELVETICA_18, "Hmm strange");
+	}
+	if (frame >= 1020 && frame < 1080)
+	{
+
+		glColor3ub(255, 255, 255);
+		renderSpacedBitmapString(350, 640, GLUT_BITMAP_HELVETICA_18, "Should be a quick fix");
+	}
+
+	if (frame >= 1080 && frame < 1140)
+	{
+
+		//WIRES//
+		// draw red wire
+		glColor3ub(204, 0, 0);
+		rectangle(SCREEN_WIDTH / 2 + 20, SCREEN_HEIGHT / 2 + 200, (frame - 1080) / 30 * 100 * 3.1, 100 * (0.8 / 9.0));
+		// draw yellow wire
+		glColor3ub(255, 204, 0);
+		rectangle(SCREEN_WIDTH / 2 + 20, SCREEN_HEIGHT / 2 + 140, (frame - 1080) / 30 * 100 * 3.1, 100 * (0.8 / 9.0));
+
+		//draw pink wire
+		glColor3ub(240, 21, 124);
+		glLineWidth(6.0);
+		line(SCREEN_WIDTH / 2 + 20, SCREEN_HEIGHT / 2 + 20, (frame - 1080) / 20 * 320.0, (frame - 1080) / 30 * 65.0);
+
+		//draw blue wire
+		glColor3ub(0, 102, 255);
+		glLineWidth(6.0);
+		line(SCREEN_WIDTH / 2 + 20, SCREEN_HEIGHT / 2 + 90, (frame - 1080) / 20 * 320.0, (frame - 1080) / 30 * -60.0);
+	}
+	if (frame >= 1140)
+	{
+
+		//WIRES//
+		// draw red wire
+		glColor3ub(204, 0, 0);
+		rectangle(SCREEN_WIDTH / 2 + 20, SCREEN_HEIGHT / 2 + 200, 100 * 3.1, 100 * (0.8 / 9.0));
+		// draw yellow wire
+		glColor3ub(255, 204, 0);
+		rectangle(SCREEN_WIDTH / 2 + 20, SCREEN_HEIGHT / 2 + 140, 100 * 3.1, 100 * (0.8 / 9.0));
+
+		//draw pink wire
+		glColor3ub(240, 21, 124);
+		glLineWidth(6.0);
+		line(SCREEN_WIDTH / 2 + 20, SCREEN_HEIGHT / 2 + 20, 320.0, 65.0);
+
+		//draw blue wire
+		glColor3ub(0, 102, 255);
+		glLineWidth(6.0);
+		line(SCREEN_WIDTH / 2 + 20, SCREEN_HEIGHT / 2 + 90, 320.0, -60.0);
+
+		if (frame < 1200)
+		{
+			//red
+			glPushMatrix();
+			glTranslated(1000, 150, 0);
+			glScaled(-5, 5, 0);
+			crew(0, 0, (frame - 1140) / 60 * 197, (frame - 1140) / 60 * 17, (frame - 1140) / 60 * 17, 0, 1);
+			glPopMatrix();
+		}
+		else
+		{
+			//red
+			glPushMatrix();
+			glTranslated(1000, 150, 0);
+			glScaled(-5, 5, 0);
+			crew(0, 0, 197, 17, 17, 0, 1);
+			glPopMatrix();
+
+			glColor3ub(255, 255, 255);
+			if (frame < 1260)
+			{
+				
+			renderSpacedBitmapString(350, 640, GLUT_BITMAP_HELVETICA_18, "Oh hi Red");
+			}
+			
+
+			if (frame > 1260)
+			{
+				//red
+				glPushMatrix();
+				glTranslated(1000-(frame-1260), 150, 0);
+				glScaled(-10, 10, 0);
+				crew(0, 0, 197, 17, 17, 0, 1);
+				glColor3ub(128,128,128);
+				glBegin(GL_POLYGON);
+				glVertex2d(5+10*sin(frame*0.5),10);
+				glVertex2d(-45+10*sin(frame*0.5),10);
+				glVertex2d(-45+10*sin(frame*0.5),30);
+				glEnd();
+				glPopMatrix();
+
+				glColor3ub(255, 255, 255);
+				renderSpacedBitmapString(350, 640, GLUT_BITMAP_HELVETICA_18, "HEY WHAT U DOIN?!");
+
+				glColor4ub(255,0,0,255*(frame-1260)/240);
+				rectangle(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
+			}
+		}
+	}
 }
 void scene_5()
 {
