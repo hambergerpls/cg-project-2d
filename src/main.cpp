@@ -149,7 +149,7 @@ Scenes
  */
 
 void scene_1(){
-
+	
 }
 
 void scene_2(){
@@ -268,6 +268,3 @@ int main(int argc, char** argv) {
 	initGL();
 	glutMainLoop();
 }
-#ifdef linux
-double GetTickCount(void);
-#endif
