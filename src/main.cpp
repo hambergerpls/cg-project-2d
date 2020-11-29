@@ -23,11 +23,13 @@ double Y = 0;
 double dx = 2.5;
 double dy = 3.0;
 
-void nGon(int x, int y, int r, int n) {
+void EllipsePoly(double x, double y, double r, int n, double a, double b)
+{
 	double inc = (2 * PI) / n;
 	glBegin(GL_POLYGON);
-		for (double theta = 0.0; theta <= 2 * PI; theta += inc) {
-			glVertex2d(r * cos(theta) + x, r * sin(theta) + y);
+	for (double theta = 0.0; theta <= 2 * PI; theta += inc)
+	{
+		glVertex2d(r * cos(theta) * a + x, r * sin(theta) * b + y);
 		}
 	glEnd();
 }
@@ -59,9 +61,10 @@ void house(double x, double y, double w) {
 	glColor3ub(200, 50, 0);
 	rectangle(x, y, w, h);
 
-	// draw door
-	glColor3ub(255, 250, 0);
-	rectangle(x+w/2 - w * 0.1, y, w * 0.2, w * (2.0 / 6.0));
+	EllipsePoly(x - 150, SCREEN_HEIGHT/2-20, 30, 100, 1.5, 2.0);
+	EllipsePoly(x - 125, SCREEN_HEIGHT/2, 15.0, 100, 2.0, 1.5);
+	EllipsePoly(x -150, SCREEN_HEIGHT/2 + 70, 10.0, 200.0, 4.0, 1.5);
+	EllipsePoly(x -150, SCREEN_HEIGHT/2 + 70, 8.0, 200.0, 4.0, 1.5);
 
 	// draw left window
 	glColor3ub(50, 250, 255);
@@ -79,6 +82,10 @@ void house(double x, double y, double w) {
 		glVertex2d(x + w, y + h + (h/3.0));
 		glVertex2d(x, y + h + (h / 3.0));
 	glEnd();
+	EllipsePoly(x + 150, SCREEN_HEIGHT/2-20, 30, 100, 1.5, 2.0);
+	EllipsePoly(x + 125, SCREEN_HEIGHT/2, 15.0, 100, 2.0, 1.5);
+	EllipsePoly(x + 150, SCREEN_HEIGHT/2 + 70, 10.0, 200.0, 4.0, 1.5);
+	EllipsePoly(x + 150, SCREEN_HEIGHT/2 + 70, 8.0, 200.0, 4.0, 1.5);
 
 }
 
