@@ -134,6 +134,46 @@ void electricalBox(double x, double y, double w)
 	rectangle(x + w * 3.28, y + w * (195.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
 }
 
+void spotlight(double x, double y)
+{
+	glColor4ub(255, 248, 220, 128);
+	glBegin(GL_POLYGON);
+	glVertex2d(x - 150, 0);
+	glVertex2d(x + 150, 0);
+	glVertex2d(x + 35, SCREEN_HEIGHT);
+	glVertex2d(x + -35, SCREEN_HEIGHT);
+	glEnd();
+}
+
+void table(double x, double y, double w)
+{
+
+	//draw left to right table leg
+	glColor3ub(155, 83, 13);
+	glLineWidth(15.0);
+	line(x - 150, y, 300.0, 120.0);
+
+	//draw right to left table leg
+	glColor3ub(155, 83, 13);
+	glLineWidth(15.0);
+	line(x + 150, y, -300.0, 120.0);
+
+	// draw table top
+	glColor3ub(205, 133, 63);
+	rectangle(x - w / 2, y + 120, w, w * 0.1); //w & h are the sizes for the rectangle
+
+	// draw button
+	glColor3ub(255, 0, 0);
+	rectangle(x - 25, y + 160, 50, 10); //w & h are the sizes for the rectangle
+
+	// draw button box
+	glColor3ub(0, 0, 0);
+	rectangle(x - 50, y + 150, 100, 10); //w & h are the sizes for the rectangle
+
+	// draw emergency box
+	glColor3ub(255, 170, 0);
+	rectangle(x - 50, y + 155, 100, 5); //w & h are the sizes for the rectangle
+}
 
 
 /* 
@@ -175,6 +215,12 @@ void scene_8(){
 
 }
 void scene_9(){
+
+	table(SCREEN_WIDTH / 2, 50, 300);
+	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	// draw floor
+	glColor3ub(155, 155, 155);
+	rectangle(0, 0, SCREEN_WIDTH, 50);
 
 }
 void scene_10(){
