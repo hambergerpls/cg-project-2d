@@ -27,6 +27,28 @@ int frame = 0; //stores current frame count
 
 /* 
 ========================
+Scenes Global Variables
+========================
+ */
+
+//SCENE 1
+double scene1_fadeEffect = -16.0;
+int scene1_fade = 0;
+double scene1_scrollX = 0;
+double scene1_rotationX = 0;
+
+//SCENE 2
+double scene2_translateX = 0;
+double scene2_scrollX;
+
+/* 
+========================
+Scenes Global Variables
+========================
+ */
+
+/* 
+========================
 Drawing tools
 ========================
  */
