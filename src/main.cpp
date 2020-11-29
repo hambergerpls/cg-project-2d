@@ -18,11 +18,6 @@
 #define PI 3.14159265
 #define FPS 60
 
-double X = 0;
-double Y = 0;
-double dx = 2.5;
-double dy = 3.0;
-
 int frame = 0; //stores current frame count
 
 /* 
@@ -129,7 +124,7 @@ void electricalBox(double x, double y, double w)
 	glColor3ub(160, 160, 160);
 	rectangle(x, y, w * 3.5, h * 3.5); //w & h are the sizes for the rectangle
 
-	//WIRES//
+	/* //WIRES//
 	// draw red wire
 	glColor3ub(204, 0, 0);
 	rectangle(x + 20, y + 67 + w * (135.0 / 100.0), w * 3.1, w * (0.8 / 9.0));
@@ -145,7 +140,7 @@ void electricalBox(double x, double y, double w)
 	//draw blue wire
 	glColor3ub(0, 102, 255);
 	glLineWidth(6.0);
-	line(x + 20, y + 85, 320.0, -60.0);
+	line(x + 20, y + 85, 320.0, -60.0); */
 
 	//LEFT SOCKETS//
 	// draw left socket (most bottom)
@@ -416,11 +411,6 @@ Objects
 Scenes
 ========================
  */
-
-double scene1_fadeEffect = -16.0;
-int scene1_fade = 0;
-double scene1_scrollX = 0;
-double rotationX = 0;
 
 void scene_1()
 {
@@ -764,6 +754,12 @@ void scene_4()
 }
 void scene_5()
 {
+	glPushMatrix();
+	glTranslated(SCREEN_WIDTH/2, SCREEN_HEIGHT/2,0);
+	deadBody(0, 0, 100);
+	glPopMatrix();
+
+	ghost(3*SCREEN_WIDTH/4, SCREEN_HEIGHT/2 + 200, 19, 46, 209, 1);
 }
 void scene_6()
 {
