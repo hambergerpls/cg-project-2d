@@ -53,13 +53,22 @@ void rectangle(double x, double y, double w, double h) {
 	glEnd();
 }
 
-void house(double x, double y, double w) {
+void victory(double x, double y)
+{
 
-	double h = w * (2.0 / 3.0);
+	// draw spotlight
+	glColor3ub(255, 248, 220);
+	glBegin(GL_POLYGON);
+	glVertex2d(x - 150, y - 100);
+	glVertex2d(x + 150, y - 100);
+	glVertex2d(x + 30, SCREEN_HEIGHT);
+	glVertex2d(x - 30, SCREEN_HEIGHT);
+	glEnd();
 
-	// draw body
-	glColor3ub(200, 50, 0);
-	rectangle(x, y, w, h);
+	// draw floor
+	glColor3ub(155, 155, 155);
+	rectangle(x - SCREEN_WIDTH / 2, y, SCREEN_WIDTH, 50);
+}
 
 	EllipsePoly(x - 150, SCREEN_HEIGHT/2-20, 30, 100, 1.5, 2.0);
 	EllipsePoly(x - 125, SCREEN_HEIGHT/2, 15.0, 100, 2.0, 1.5);
@@ -95,9 +104,7 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPointSize(10.0);
 
-	//glColor3ub(0, 200, 255);
-	//nGon(X, Y, 30, 100);
-	house(X, Y, 100);
+	victory(SCREEN_WIDTH / 2, 0);
 
 	glFlush();
 	glutSwapBuffers();
