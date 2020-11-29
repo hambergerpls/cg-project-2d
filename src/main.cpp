@@ -201,77 +201,31 @@ void table(double x, double y, double w)
 	rectangle(x - 50, y + 155, 100, 5); //w & h are the sizes for the rectangle
 }
 
-void ghost(double x, double y)
+void ghost(double x, double y, int R, int G, int B, int direction)
 {
-	//BLUE GHOST
 	// draw ghost tail
-	glColor3ub(0, 200, 255);
+	glColor4ub(0, G, B, 128);
 	glBegin(GL_POLYGON);
-	glVertex2d(x - 150, SCREEN_HEIGHT / 2 - 80);
-	glVertex2d(x - 200, SCREEN_HEIGHT / 2 - 80);
-	glVertex2d(x - 150, SCREEN_HEIGHT / 2 + 50 - 80);
+	glVertex2d(x + direction*150, y - 80);
+	glVertex2d(x + direction*200, y - 80);
+	glVertex2d(x + direction*175, y - 80 + 15);
 	glEnd();
 	//draw ghost body
-	glColor3ub(0, 200, 255);
-	EllipsePoly(x - 150, SCREEN_HEIGHT / 2 - 20, 30, 100, 1.5, 2.0);
+	glColor4ub(0, G, B, 128);
+	EllipsePoly(x + direction*150, y - 20, 30, 100, 1.5, 2.0);
 	//draw ghost eyes
+	glColor3ub(0, 0, 0);
+	EllipsePoly(x + direction*125, y, 15.0, 100, 2.0, 1.5);
 	glColor3ub(255, 255, 255);
-	EllipsePoly(x - 125, SCREEN_HEIGHT / 2, 15.0, 100, 2.0, 1.5);
+	EllipsePoly(x + direction*125, y, 13.0, 100, 2.0, 1.5);
 	//draw ghost outer halo
 	glColor3ub(255, 255, 0);
-	EllipsePoly(x - 150, SCREEN_HEIGHT / 2 + 70, 10.0, 200.0, 4.0, 1.5);
+	EllipsePoly(x + direction*150, y + 70, 10.0, 200.0, 4.0, 1.5);
 	//draw ghost inner halo
 	glColor3ub(0, 0, 0);
-	EllipsePoly(x - 150, SCREEN_HEIGHT / 2 + 70, 8.0, 200.0, 4.0, 1.5);
-	//make transparent
-	glColor4ub(0, 0, 0, 128);
-	EllipsePoly(x - 150, SCREEN_HEIGHT / 2 - 20, 60, 100, 1.5, 2.0);
+	EllipsePoly(x + direction*150, y + 70, 8.0, 200.0, 4.0, 1.5);
 
-	//Yellow GHOST
-	// draw ghost tail
-	glColor3ub(245, 245, 87);
-	glBegin(GL_POLYGON);
-	glVertex2d(x + 150, SCREEN_HEIGHT / 2 - 80);
-	glVertex2d(x + 200, SCREEN_HEIGHT / 2 - 80);
-	glVertex2d(x + 150, SCREEN_HEIGHT / 2 + 50 - 80);
-	glEnd();
-	//draw ghost body
-	glColor3ub(245, 245, 87);
-	EllipsePoly(x + 150, SCREEN_HEIGHT / 2 - 20, 30, 100, 1.5, 2.0);
-	//draw ghost eyes
-	glColor3ub(255, 255, 255);
-	EllipsePoly(x + 125, SCREEN_HEIGHT / 2, 15.0, 100, 2.0, 1.5);
-	//draw ghost outer halo
-	glColor3ub(255, 255, 0);
-	EllipsePoly(x + 150, SCREEN_HEIGHT / 2 + 70, 10.0, 200.0, 4.0, 1.5);
-	//draw ghost inner halo
-	glColor3ub(0, 0, 0);
-	EllipsePoly(x + 150, SCREEN_HEIGHT / 2 + 70, 8.0, 200.0, 4.0, 1.5);
-	glColor4ub(0, 0, 0, 128);
-	EllipsePoly(x + 150, SCREEN_HEIGHT / 2 - 20, 60, 100, 1.5, 2.0);
-
-	//Green GHOST
-	// draw ghost tail
-	glColor3ub(0, 255, 0);
-	glBegin(GL_POLYGON);
-	glVertex2d(x + 350, SCREEN_HEIGHT / 2 - 160);
-	glVertex2d(x + 400, SCREEN_HEIGHT / 2 - 160);
-	glVertex2d(x + 350, SCREEN_HEIGHT / 2 + 50 - 160);
-	glEnd();
-	//draw ghost body
-	glColor3ub(0, 255, 0);
-	EllipsePoly(x + 350, SCREEN_HEIGHT / 2 - 100, 30, 100, 1.5, 2.0);
-	//draw ghost eyes
-	glColor3ub(255, 255, 255);
-	EllipsePoly(x + 325, SCREEN_HEIGHT / 2 - 80, 15.0, 100, 2.0, 1.5);
-	//draw ghost outer halo
-	glColor3ub(255, 255, 0);
-	EllipsePoly(x + 350, SCREEN_HEIGHT / 2 - 10, 10.0, 200.0, 4.0, 1.5);
-	//draw ghost inner halo
-	glColor3ub(0, 0, 0);
-	EllipsePoly(x + 350, SCREEN_HEIGHT / 2 - 10, 8.0, 200.0, 4.0, 1.5);
-	glColor4ub(0, 0, 0, 128);
-	EllipsePoly(x + 350, SCREEN_HEIGHT / 2 - 100, 60, 100, 1.5, 2.0);
+	
 }
 
 void imposter(double x, double y)
@@ -444,7 +398,7 @@ void scene_11()
 
 	imposter(SCREEN_WIDTH / 2, 50);
 	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 500);
-	ghost(SCREEN_WIDTH / 2, 0);
+	//ghost(SCREEN_WIDTH / 2, 0);
 	// draw floor
 	glColor3ub(155, 155, 155);
 	rectangle(0, 0, SCREEN_WIDTH, 50);
