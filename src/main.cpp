@@ -1,5 +1,6 @@
 
 #include <stdlib.h>
+#include <iostream>
 #include <math.h>
 #ifdef _WIN32 //windows header location
 #include <gl/freeglut.h>
@@ -22,6 +23,8 @@ double X = 0;
 double Y = 0;
 double dx = 2.5;
 double dy = 3.0;
+
+int frame = 0; //stores current frame count
 
 void nGon(int x, int y, int r, int n) {
 	double inc = (2 * PI) / n;
@@ -85,6 +88,8 @@ void house(double x, double y, double w) {
 
 
 void display() {
+	frame++;
+	std::cout << frame << std::endl; //print frame number
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPointSize(10.0);
 
@@ -105,12 +110,10 @@ void idle() {
 
 	if (X<0 || X > SCREEN_WIDTH) dx *= -1;
 	if (Y<0 || Y > SCREEN_HEIGHT) dy *= -1;
+	house(X, Y, 100);
 
-	//while (GetTickCount() - start < 1000 / FPS) {}; 
-	/*start shows undefined in intellisense but we have already defined it above, ignore it.
-	this while function is being used to limit the FPS to the defined FPS value.
-	*/
-	glutPostRedisplay();
+	glFlush();
+	glutSwapBuffers();
 }
 
 void initGL() {
@@ -120,9 +123,9 @@ void initGL() {
 	gluOrtho2D(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT);
 }
 
-void Timer(int value){
-	if(value) glutPostRedisplay();
-	glutTimerFunc(300, Timer, value);
+void Timer(int){
+	glutPostRedisplay();
+	glutTimerFunc(1000/FPS, Timer, 0);
 }
 
 int main(int argc, char** argv) {
