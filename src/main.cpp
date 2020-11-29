@@ -248,21 +248,23 @@ void imposter(double x, double y)
 
 void crew(double x, double y, int R, int G, int B)
 {
-
+	glPushMatrix();
+	glTranslated(x, y, 0);
 	//draw right leg
 	glColor4ub(R, G, B, 224);
-	rectangle(x + 0, y - 30, 30, -40);
+	rectangle(0, -30, 30, -40);
 	//draw body
 	glColor3ub(R, G, B);
-	EllipsePoly(x, y, 30, 100, 1.5, 2.0);
+	EllipsePoly(0, 0, 30, 100, 1.5, 2.0);
 	//draw eyes
 	glColor3ub(0, 0, 0);
-	EllipsePoly(x + 25, y + 15, 15.0, 100, 2.0, 1.5);
+	EllipsePoly(25, 15, 15.0, 100, 2.0, 1.5);
 	glColor3ub(255, 255, 255);
-	EllipsePoly(x + 25, y + 15, 13.0, 100, 2.0, 1.5);
+	EllipsePoly(25, 15, 13.0, 100, 2.0, 1.5);
 	//draw left leg
 	glColor3ub(R, G, B);
-	rectangle(x - 40, y - 30, 30, -40);
+	rectangle(-40, -30, 30, -40);
+	glPopMatrix();
 }
 
 void deadBody(double x, double y, double w) {
@@ -341,22 +343,47 @@ void scene_1()
 	stars();
 	glPopMatrix();
 
-	crew(SCREEN_WIDTH / 3 + 50, 120, 197, 17, 17);	 //RED
-	crew(SCREEN_WIDTH / 3 + 150, 120, 17, 127, 45);	 //GREEN
-	crew(SCREEN_WIDTH / 3 + 250, 120, 19, 46, 209);	 //BLUE
-	crew(SCREEN_WIDTH / 3 + 350, 120, 245, 245, 87); //YELLOW
+	//RED
+	glPushMatrix();
+	glTranslated(SCREEN_WIDTH - 500 - scene1_scrollX, 350 + scene1_scrollX, 0);
+	glRotated(-rotationX, 0, 0, 1.0);
+	crew(0, 0, 197, 17, 17);
+	glPopMatrix();
+
+	//GREEN
+	glPushMatrix();
+	glTranslated(250 + scene1_scrollX, 400, 0);
+	glRotated(rotationX, 0, 0, 1.0);
+	crew(0, 0, 17, 127, 45);
+	glPopMatrix();
+
+	//BLUE
+	glPushMatrix();
+	glTranslated(640 - scene1_scrollX, 350 + scene1_scrollX, 0);
+	glRotated(rotationX, 0, 0, 1.0);
+	crew(0, 0, 19, 46, 209);
+	glPopMatrix();
+
+	//YELLOW
+	glPushMatrix();
+	glTranslated(0 + 3 * scene1_scrollX, scene1_scrollX, 0);
+	glRotated(rotationX, 0, 0, 1.0);
+	crew(0, 0, 245, 245, 87);
+	glPopMatrix();
+
 	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 500);
 	renderSpacedBitmapString(SCREEN_WIDTH / 12, 270, GLUT_BITMAP_HELVETICA_18, "\"BETWEEN US\"");
 	renderSpacedBitmapString(SCREEN_WIDTH / 12, 130, GLUT_BITMAP_HELVETICA_18, "Created By:");
-	renderSpacedBitmapString(SCREEN_WIDTH / 12, 110, GLUT_BITMAP_HELVETICA_18, "GROUP 17");	
-	scene1_scrollX++;
-	scene1_fadeEffect += 0.1;
-	scene1_fade = -(scene1_fadeEffect * scene1_fadeEffect) + 256;
+	renderSpacedBitmapString(SCREEN_WIDTH / 12, 110, GLUT_BITMAP_HELVETICA_18, "GROUP 17");
 	glColor4ub(0, 0, 0, 256 - scene1_fade);
 	rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	// draw floor
 	glColor3ub(155, 155, 155);
 	rectangle(0, 0, SCREEN_WIDTH, 50);
+	scene1_scrollX++;
+	scene1_fadeEffect += 0.1;
+	scene1_fade = -(scene1_fadeEffect * scene1_fadeEffect) + 256;
+	rotationX += 5;
 }
 
 void scene_2()
