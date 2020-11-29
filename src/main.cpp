@@ -306,11 +306,14 @@ Scenes
  */
 
 void scene_1(){
-	crew(SCREEN_WIDTH/3, 120, 197, 17, 17);//RED
-	crew(SCREEN_WIDTH/3 + 100, 120, 17, 127, 45);//GREEN
-	crew(SCREEN_WIDTH/3 + 200, 120, 19, 46, 209);//BLUE
-	crew(SCREEN_WIDTH/3 + 200, 120, 245, 245, 87);//YELLOW
-		// draw floor
+
+
+
+	crew(SCREEN_WIDTH/3 + 50, 120, 197, 17, 17);//RED
+	crew(SCREEN_WIDTH/3 + 150, 120, 17, 127, 45);//GREEN
+	crew(SCREEN_WIDTH/3 + 250, 120, 19, 46, 209);//BLUE
+	crew(SCREEN_WIDTH/3 + 350, 120, 245, 245, 87);//YELLOW
+	// draw floor
 	glColor3ub(155, 155, 155);
 	rectangle(0, 0, SCREEN_WIDTH, 50);
 	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
