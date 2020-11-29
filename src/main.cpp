@@ -75,13 +75,7 @@ void house(double x, double y, double w) {
 
 }
 
-
-
-void display() {
-	frame++;
-	std::cout << frame << std::endl; //print frame number
-	glClear(GL_COLOR_BUFFER_BIT);
-	glPointSize(10.0);
+void scene_1(){
 
 	X += dx;
 	Y += dy;
@@ -89,6 +83,90 @@ void display() {
 	if (X<0 || X > SCREEN_WIDTH) dx *= -1;
 	if (Y<0 || Y > SCREEN_HEIGHT) dy *= -1;
 	house(X, Y, 100);
+
+}
+
+void scene_2(){
+	
+}
+void scene_3(){
+
+}
+void scene_4(){
+
+}
+void scene_5(){
+
+}
+void scene_6(){
+
+}
+void scene_7(){
+
+}
+void scene_8(){
+
+}
+void scene_9(){
+
+}
+void scene_10(){
+
+}
+void scene_11(){
+
+}
+
+void display() {
+	frame++;
+	std::cout << frame << std::endl; //print frame number
+	glClear(GL_COLOR_BUFFER_BIT);
+	glPointSize(10.0);
+
+	if(frame <= 300 ) //5 seconds scene 1
+	{
+		scene_1();
+	}
+	else if(frame > 300 && frame <= 600 ) //5 seconds scene 2
+	{
+		scene_2();
+	}
+	else if(frame > 600 && frame <= 900 ) //5 seconds scene 3
+	{
+		scene_3();
+	}
+	else if(frame > 900 && frame <= 1500 ) //10 seconds scene 4
+	{
+		scene_4();
+	}
+	else if(frame > 1500 && frame <= 1800 ) //5 seconds scene 5
+	{
+		scene_5();
+	}
+	else if(frame > 1800 && frame <= 2100 ) //5 seconds scene 6
+	{
+		scene_6();
+	}
+	else if(frame > 2100 && frame <= 2400 ) //5 seconds scene 7
+	{
+		scene_7();
+	}
+	else if(frame > 2400 && frame <= 2700 ) //5 seconds scene 8
+	{
+		scene_8();
+	}
+	else if(frame > 2700 && frame <= 3300 ) //10 seconds scene 9
+	{
+		scene_9();
+	}
+	else if(frame > 3300 && frame <= 3600 ) //5 seconds scene 10
+	{
+		scene_10();
+	}
+	else if(frame > 3600 && frame <= 3900 ) //5 seconds scene 11
+	{
+		scene_11();
+	}
 
 	glFlush();
 	glutSwapBuffers();
