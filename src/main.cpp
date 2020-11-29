@@ -292,6 +292,7 @@ void crew(double x, double y, int R, int G, int B){
 	glColor3ub(R, G, B);
 	rectangle(x - 40, y - 30, 30, -40);
 }
+
 /* 
 ========================
 Objects
@@ -305,7 +306,14 @@ Scenes
  */
 
 void scene_1(){
-	
+	crew(SCREEN_WIDTH/3, 120, 197, 17, 17);//RED
+	crew(SCREEN_WIDTH/3 + 100, 120, 17, 127, 45);//GREEN
+	crew(SCREEN_WIDTH/3 + 200, 120, 19, 46, 209);//BLUE
+	crew(SCREEN_WIDTH/3 + 200, 120, 245, 245, 87);//YELLOW
+		// draw floor
+	glColor3ub(155, 155, 155);
+	rectangle(0, 0, SCREEN_WIDTH, 50);
+	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 }
 
 void scene_2(){
@@ -434,6 +442,8 @@ int main(int argc, char** argv) {
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);//set window size
 	glutCreateWindow("our program \u262d");//set window name
 	glutDisplayFunc(display);//callback function, redraw when window is updated
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 	glutTimerFunc(0, Timer, 0);//execute function every frame
 	initGL();
 	glutMainLoop();
