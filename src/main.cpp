@@ -160,14 +160,14 @@ void electricalBox(double x, double y, double w)
 	rectangle(x + w * 3.28, y + w * (195.0 / 100.0), w * (2.0 / 9.0), w * (2.0 / 9.0));
 }
 
-void spotlight(double x, double y)
+void spotlight(double x, double y, double top_width, double bottom_width)
 {
 	glColor4ub(255, 248, 220, 128);
 	glBegin(GL_POLYGON);
-	glVertex2d(x - 150, 0);
-	glVertex2d(x + 150, 0);
-	glVertex2d(x + 35, SCREEN_HEIGHT);
-	glVertex2d(x + -35, SCREEN_HEIGHT);
+	glVertex2d(x - bottom_width/2, 0);
+	glVertex2d(x + bottom_width/2, 0);
+	glVertex2d(x + top_width/2, SCREEN_HEIGHT);
+	glVertex2d(x - top_width/2, SCREEN_HEIGHT);
 	glEnd();
 }
 
@@ -302,8 +302,10 @@ void crew(double x, double y, int R, int G, int B)
 	glColor3ub(R, G, B);
 	EllipsePoly(x, y, 30, 100, 1.5, 2.0);
 	//draw eyes
-	glColor3ub(255, 255, 255);
+	glColor3ub(0, 0, 0);
 	EllipsePoly(x + 25, y + 15, 15.0, 100, 2.0, 1.5);
+	glColor3ub(255, 255, 255);
+	EllipsePoly(x + 25, y + 15, 13.0, 100, 2.0, 1.5);
 	//draw left leg
 	glColor3ub(R, G, B);
 	rectangle(x - 40, y - 30, 30, -40);
@@ -351,18 +353,18 @@ void scene_1()
 	crew(SCREEN_WIDTH / 3 + 150, 120, 17, 127, 45);	 //GREEN
 	crew(SCREEN_WIDTH / 3 + 250, 120, 19, 46, 209);	 //BLUE
 	crew(SCREEN_WIDTH / 3 + 350, 120, 245, 245, 87); //YELLOW
-	// draw floor
-	glColor3ub(155, 155, 155);
-	rectangle(0, 0, SCREEN_WIDTH, 50);
-	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-	renderSpacedBitmapString(SCREEN_WIDTH / 12, 270, GLUT_BITMAP_HELVETICA_18, "\"BETWEEN US\"");				// Add text on the scene
-	renderSpacedBitmapString(SCREEN_WIDTH / 12, 130, GLUT_BITMAP_HELVETICA_18, "Created By:");				// Add text on the scene
-	renderSpacedBitmapString(SCREEN_WIDTH / 12, 110, GLUT_BITMAP_HELVETICA_18, "GROUP 17");					// Add text on the scene
+	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 500);
+	renderSpacedBitmapString(SCREEN_WIDTH / 12, 270, GLUT_BITMAP_HELVETICA_18, "\"BETWEEN US\"");
+	renderSpacedBitmapString(SCREEN_WIDTH / 12, 130, GLUT_BITMAP_HELVETICA_18, "Created By:");
+	renderSpacedBitmapString(SCREEN_WIDTH / 12, 110, GLUT_BITMAP_HELVETICA_18, "GROUP 17");	
 	scene1_scrollX++;
 	scene1_fadeEffect += 0.1;
 	scene1_fade = -(scene1_fadeEffect * scene1_fadeEffect) + 256;
 	glColor4ub(0, 0, 0, 256 - scene1_fade);
 	rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	// draw floor
+	glColor3ub(155, 155, 155);
+	rectangle(0, 0, SCREEN_WIDTH, 50);
 }
 
 void scene_2()
@@ -391,7 +393,7 @@ void scene_9()
 {
 
 	table(SCREEN_WIDTH / 2, 50, 300);
-	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 500);
 	// draw floor
 	glColor3ub(155, 155, 155);
 	rectangle(0, 0, SCREEN_WIDTH, 50);
@@ -403,7 +405,7 @@ void scene_11()
 {
 
 	imposter(SCREEN_WIDTH / 2, 50);
-	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 500);
 	ghost(SCREEN_WIDTH / 2, 0);
 	// draw floor
 	glColor3ub(155, 155, 155);
