@@ -164,10 +164,10 @@ void spotlight(double x, double y, double top_width, double bottom_width)
 {
 	glColor4ub(255, 248, 220, 128);
 	glBegin(GL_POLYGON);
-	glVertex2d(x - bottom_width/2, 0);
-	glVertex2d(x + bottom_width/2, 0);
-	glVertex2d(x + top_width/2, SCREEN_HEIGHT);
-	glVertex2d(x - top_width/2, SCREEN_HEIGHT);
+	glVertex2d(x - bottom_width / 2, 0);
+	glVertex2d(x + bottom_width / 2, 0);
+	glVertex2d(x + top_width / 2, SCREEN_HEIGHT);
+	glVertex2d(x - top_width / 2, SCREEN_HEIGHT);
 	glEnd();
 }
 
@@ -206,26 +206,24 @@ void ghost(double x, double y, int R, int G, int B, int direction)
 	// draw ghost tail
 	glColor4ub(0, G, B, 128);
 	glBegin(GL_POLYGON);
-	glVertex2d(x + direction*150, y - 80);
-	glVertex2d(x + direction*200, y - 80);
-	glVertex2d(x + direction*175, y - 80 + 15);
+	glVertex2d(x + direction * 150, y - 80);
+	glVertex2d(x + direction * 200, y - 80);
+	glVertex2d(x + direction * 175, y - 80 + 15);
 	glEnd();
 	//draw ghost body
 	glColor4ub(0, G, B, 128);
-	EllipsePoly(x + direction*150, y - 20, 30, 100, 1.5, 2.0);
+	EllipsePoly(x + direction * 150, y - 20, 30, 100, 1.5, 2.0);
 	//draw ghost eyes
 	glColor3ub(0, 0, 0);
-	EllipsePoly(x + direction*125, y, 15.0, 100, 2.0, 1.5);
+	EllipsePoly(x + direction * 125, y, 15.0, 100, 2.0, 1.5);
 	glColor3ub(255, 255, 255);
-	EllipsePoly(x + direction*125, y, 13.0, 100, 2.0, 1.5);
+	EllipsePoly(x + direction * 125, y, 13.0, 100, 2.0, 1.5);
 	//draw ghost outer halo
 	glColor3ub(255, 255, 0);
-	EllipsePoly(x + direction*150, y + 70, 10.0, 200.0, 4.0, 1.5);
+	EllipsePoly(x + direction * 150, y + 70, 10.0, 200.0, 4.0, 1.5);
 	//draw ghost inner halo
 	glColor3ub(0, 0, 0);
-	EllipsePoly(x + direction*150, y + 70, 8.0, 200.0, 4.0, 1.5);
-
-	
+	EllipsePoly(x + direction * 150, y + 70, 8.0, 200.0, 4.0, 1.5);
 }
 
 void imposter(double x, double y)
@@ -267,7 +265,8 @@ void crew(double x, double y, int R, int G, int B)
 	glPopMatrix();
 }
 
-void deadBody(double x, double y, double w) {
+void deadBody(double x, double y, double w)
+{
 
 	double h = w * (2.0 / 3.0);
 
@@ -295,11 +294,11 @@ void deadBody(double x, double y, double w) {
 
 	//bloody rectangle
 	glColor3ub(230, 0, 0);
-	rectangle(x + 5, y, w * 0.22, h * 1.0);//w& h are the sizes for the rectangle
-
+	rectangle(x + 5, y, w * 0.22, h * 1.0); //w& h are the sizes for the rectangle
 }
 
-void stars(){
+void stars()
+{
 
 	glBegin(GL_POINTS);
 	glColor3ub(255, 255, 255);
@@ -360,6 +359,7 @@ Scenes
 double scene1_fadeEffect = -16.0;
 int scene1_fade = 0;
 double scene1_scrollX = 0;
+double rotationX = 0;
 
 void scene_1()
 {
