@@ -120,13 +120,18 @@ void initGL() {
 	gluOrtho2D(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT);
 }
 
+void Timer(int value){
+	if(value) glutPostRedisplay();
+	glutTimerFunc(300, Timer, value);
+}
+
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);//initialise glut library
 	glutInitDisplayMode(GLUT_DOUBLE);//set displaymode to double buffered window
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);//set window size
 	glutCreateWindow("our program \u262d");//set window name
 	glutDisplayFunc(display);//callback function, redraw when window is updated
-	glutIdleFunc(idle);//execute idle function when there is no user input
+	glutTimerFunc(0, Timer, 0);//execute function every frame
 	initGL();
 	glutMainLoop();
 }
