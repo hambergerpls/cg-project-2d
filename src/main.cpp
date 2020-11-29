@@ -315,7 +315,34 @@ void stars(){
 	glVertex2i(-40, 480);
 	glVertex2i(-20, 640);
 	glEnd();
+}
 
+void spaceship(double x, double y)
+{
+	glPushMatrix();
+	glTranslated(x, y, 0);
+	glBegin(GL_POLYGON);
+	glColor3ub(91, 106, 109);
+	glVertex2d(0, 0);
+	glVertex2d(150, 0);
+	glVertex2d(150, -100);
+	glVertex2d(350, -30);
+	glVertex2d(400, 50);
+	glVertex2d(300, 100);
+	glVertex2d(150, 100);
+	glVertex2d(100, 50);
+	glVertex2d(0, 50);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3ub(175, 179, 142);
+	glVertex2d(250, 50);
+	glVertex2d(385, 50);
+	glVertex2d(300, 90);
+	glVertex2d(250, 90);
+
+	glEnd();
+	glPopMatrix();
 }
 
 /* 
@@ -386,8 +413,39 @@ void scene_1()
 	rotationX += 5;
 }
 
+double scene2_translateX = 0;
+double scene2_scrollX;
 void scene_2()
 {
+
+	if (frame < 420)
+	{
+		//stars
+		glPushMatrix();
+		glTranslated(scene2_scrollX, 0, 0);
+		stars();
+		glPopMatrix();
+
+		//ship
+		glPushMatrix();
+		glTranslated(scene2_translateX, 0, 0);
+		spaceship(640, 360);
+		glPopMatrix();
+
+		scene2_scrollX++;
+		scene2_translateX += 0.5;
+
+		renderSpacedBitmapString(SCREEN_WIDTH / 2 - 100, 360, GLUT_BITMAP_HELVETICA_18, "Spaceship -->");
+	}
+	else
+	{
+		//BLUE
+		glPushMatrix();
+		glTranslated(640 - scene1_scrollX, 350 + scene1_scrollX, 0);
+		glRotated(rotationX, 0, 0, 1.0);
+		crew(0, 0, 19, 46, 209);
+		glPopMatrix();
+	}
 }
 void scene_3()
 {
