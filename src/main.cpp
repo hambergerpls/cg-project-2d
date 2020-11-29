@@ -35,16 +35,6 @@ void nGon(int x, int y, int r, int n) {
 	glEnd();
 }
 
-#ifdef linux
-double GetTickCount(void) 
-{
-  struct timespec now;
-  if (clock_gettime(CLOCK_MONOTONIC, &now))
-    return 0;
-  return now.tv_sec * 1000.0 + now.tv_nsec / 1000000.0;
-}
-#endif
-
 void rectangle(double x, double y, double w, double h) {
 	glBegin(GL_POLYGON);
 		glVertex2d(x, y);
@@ -92,18 +82,6 @@ void display() {
 	std::cout << frame << std::endl; //print frame number
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPointSize(10.0);
-
-	//glColor3ub(0, 200, 255);
-	//nGon(X, Y, 30, 100);
-	house(X, Y, 100);
-
-	glFlush();
-	glutSwapBuffers();
-}
-
-void idle() {
-	
-	unsigned int start = GetTickCount();
 
 	X += dx;
 	Y += dy;
