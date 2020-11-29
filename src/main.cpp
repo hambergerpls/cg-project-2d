@@ -329,6 +329,14 @@ void scene_10(){
 }
 void scene_11(){
 
+
+	imposter(SCREEN_WIDTH/2, 50);
+	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	ghost(SCREEN_WIDTH / 2, 0);
+	// draw floor
+	glColor3ub(155, 155, 155);
+	rectangle(0, 0, SCREEN_WIDTH, 50);
+
 }
 
 /* 
