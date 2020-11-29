@@ -266,13 +266,25 @@ void imposter(double x, double y)
 	EllipsePoly(x + 25, SCREEN_HEIGHT / 2 - 185 + y, 15, 20, 1.5, 2.0);
 }
 
-void crew(double x, double y, int R, int G, int B)
+void crew(double x, double y, int R, int G, int B, int anim)
 {
-	glPushMatrix();
-	glTranslated(x, y, 0);
 	//draw right leg
-	glColor4ub(R, G, B, 224);
-	rectangle(0, -30, 30, -40);
+	if (anim == 1)
+	{
+		glPushMatrix();
+		glTranslated(10, -30, 0);
+		glRotated(45 * sin(0.1 * frame), 0, 0, 1);
+		glColor4ub(R, G, B, 224);
+		rectangle(-10, 0, 30, -40);
+		glPopMatrix();
+	}
+	else
+	{
+		glPushMatrix();
+		glTranslated(x, y, 0);
+		glColor4ub(R, G, B, 224);
+		rectangle(0, -30, 30, -40);
+	}
 	//draw body
 	glColor3ub(R, G, B);
 	EllipsePoly(0, 0, 30, 100, 1.5, 2.0);
@@ -282,8 +294,20 @@ void crew(double x, double y, int R, int G, int B)
 	glColor3ub(255, 255, 255);
 	EllipsePoly(25, 15, 13.0, 100, 2.0, 1.5);
 	//draw left leg
-	glColor3ub(R, G, B);
-	rectangle(-40, -30, 30, -40);
+	if (anim == 1)
+	{
+		glPushMatrix();
+		glTranslated(-30, -30, 0);
+		glRotated(-45 * sin(0.1 * frame), 0, 0, 1);
+		glColor3ub(R, G, B);
+		rectangle(-10, 0, 30, -40);
+		glPopMatrix();
+	}
+	else
+	{
+		glColor3ub(R, G, B);
+		rectangle(-40, -30, 30, -40);
+	}
 	glPopMatrix();
 }
 
