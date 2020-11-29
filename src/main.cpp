@@ -311,6 +311,38 @@ void crew(double x, double y, int R, int G, int B)
 	rectangle(x - 40, y - 30, 30, -40);
 }
 
+void deadBody(double x, double y, double w) {
+
+	double h = w * (2.0 / 3.0);
+
+	//blood
+	glColor3ub(230, 0, 0);
+	EllipsePoly(x + 100, y - 80, 32.0, 100.0, 2, 3);
+
+	// draw body of dead blue
+	glColor3ub(0, 0, 230);
+	rectangle(x, y, w * 1.8, h * 2.0); //w & h are the sizes for the rectangle
+	glColor3ub(0, 0, 230);
+	nGon(x, y - 32, 33.0, 100.0);
+	glColor3ub(230, 0, 0);
+	nGon(x, y - 32, 20.0, 100.0);
+	glColor3ub(255, 255, 255);
+	rectangle(x - 70, y + 60, w * 0.7, h * 0.4); //w & h are the sizes for the rectangle
+
+	// draw bone triangle
+	glColor3ub(255, 255, 255);
+	glBegin(GL_POLYGON);
+	glVertex2d(x - 55, y + 72);
+	glVertex2d(x - 95, y + 96);
+	glVertex2d(x - 95, y + 48);
+	glEnd();
+
+	//bloody rectangle
+	glColor3ub(230, 0, 0);
+	rectangle(x + 5, y, w * 0.22, h * 1.0);//w& h are the sizes for the rectangle
+
+}
+
 /* 
 ========================
 Objects
