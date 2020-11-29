@@ -159,6 +159,7 @@ void scene_3(){
 
 }
 void scene_4(){
+	electricalBox(SCREEN_WIDTH/2,SCREEN_HEIGHT/2, 100);
 
 }
 void scene_5(){
