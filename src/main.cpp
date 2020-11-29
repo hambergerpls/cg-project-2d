@@ -250,6 +250,7 @@ void initGL() {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT);
+	glMatrixMode(GL_MODELVIEW);
 }
 
 void Timer(int){
