@@ -48,6 +48,14 @@ void rectangle(double x, double y, double w, double h) {
 	glEnd();
 }
 
+void line(int x, int y, int w, int h)
+{
+	glBegin(GL_LINES);
+	glVertex2f(x, y);
+	glVertex2f(x + w, y + h);
+	glEnd();
+}
+
 /* 
 ========================
 Drawing tools
