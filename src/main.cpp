@@ -67,6 +67,17 @@ void EllipsePoly(double x, double y, double r, int n, double a, double b)
 	glEnd();
 }
 
+void renderSpacedBitmapString(float x, float y, void *font, char *string)
+{
+	char *c;
+	int x1 = x;
+	for (c = string; *c != '\0'; c++)
+	{
+		glRasterPos2f(x1, y);
+		glutBitmapCharacter(font, *c);
+		x1 = x1 + glutBitmapWidth(font, *c);
+	}
+}
 /* 
 ========================
 Drawing tools
