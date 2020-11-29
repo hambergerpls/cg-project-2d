@@ -444,8 +444,13 @@ void scene_1()
 	crew(0, 0, 245, 245, 87, 0);
 	glPopMatrix();
 
-	spotlight(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 300, 500);
-	renderSpacedBitmapString(SCREEN_WIDTH / 12, 270, GLUT_BITMAP_HELVETICA_18, "\"BETWEEN US\"");
+	glPushMatrix();
+	glTranslated(SCREEN_WIDTH / 2, 360, 0);
+	glScaled(1 + 0.01 * (scene1_scrollX), 1 + 0.01 * (scene1_scrollX), 0);
+	glColor3ub(255, 0, 0);
+	renderSpacedBitmapString(-65, 0, GLUT_BITMAP_HELVETICA_18, "\"BETWEEN US\"");
+	glPopMatrix();
+	glColor3ub(255, 255, 255);
 	renderSpacedBitmapString(SCREEN_WIDTH / 12, 130, GLUT_BITMAP_HELVETICA_18, "Created By:");
 	renderSpacedBitmapString(SCREEN_WIDTH / 12, 110, GLUT_BITMAP_HELVETICA_18, "GROUP 17");
 	glColor4ub(0, 0, 0, 256 - scene1_fade);
@@ -456,7 +461,7 @@ void scene_1()
 	scene1_scrollX++;
 	scene1_fadeEffect += 0.1;
 	scene1_fade = -(scene1_fadeEffect * scene1_fadeEffect) + 256;
-	rotationX += 5;
+	scene1_rotationX += 5;
 }
 
 double scene2_translateX = 0;
