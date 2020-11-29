@@ -464,8 +464,6 @@ void scene_1()
 	scene1_rotationX += 5;
 }
 
-double scene2_translateX = 0;
-double scene2_scrollX;
 void scene_2()
 {
 
@@ -488,13 +486,72 @@ void scene_2()
 
 		renderSpacedBitmapString(SCREEN_WIDTH / 2 - 100, 360, GLUT_BITMAP_HELVETICA_18, "Spaceship -->");
 	}
+	else if (frame == 420)
+	{
+		scene2_scrollX = 0;
+	}
 	else
 	{
+
+		glPushMatrix();
+		glTranslated(-scene2_scrollX, 0, 0);
+		//Background
+		glColor3ub(91, 106, 109);
+		rectangle(0, 0, SCREEN_WIDTH + 200, SCREEN_HEIGHT);
+
+		//floor
+		glColor3ub(121, 136, 139);
+		rectangle(0, 0, SCREEN_WIDTH + 200, 100);
+
+		//door
+		glColor3ub(0, 0, 0);
+		glBegin(GL_POLYGON);
+		glVertex2d(850, 100);
+		glVertex2d(1100, 100);
+		glVertex2d(1100, 300);
+		glVertex2d(850, 300);
+		glEnd();
+
+		//artwork
+		glColor3ub(188, 121, 57);
+		rectangle(450, 300, 300, 200); //frame
+		glColor3ub(83, 148, 192);
+		rectangle(460, 310, 280, 180); //sky
+		glColor3ub(126, 203, 44);
+		rectangle(460, 310, 280, 120); //grass
+		glColor3ub(29, 34, 40);
+		rectangle(460, 320, 280, 20);
+		glColor3ub(128, 128, 128); //moutain
+		glBegin(GL_POLYGON);
+		glVertex2d(500, 400);
+		glVertex2d(600, 400);
+		glVertex2d(550, 450);
+		glEnd();
+		glColor3ub(128, 128, 128); //moutain
+		glBegin(GL_POLYGON);
+		glVertex2d(550, 400);
+		glVertex2d(650, 400);
+		glVertex2d(600, 450);
+		glEnd();
+		glColor3ub(255, 255, 255);
+		nGon(600, 475, 10, 32);
+		glPopMatrix();
+
 		//BLUE
 		glPushMatrix();
-		glTranslated(640 - scene1_scrollX, 350 + scene1_scrollX, 0);
-		glRotated(rotationX, 0, 0, 1.0);
-		crew(0, 0, 19, 46, 209);
+		glTranslated(5 * scene2_scrollX, 150, 0);
+		crew(0, 0, 19, 46, 209, 1);
+		glPopMatrix();
+		scene2_scrollX++;
+
+		glPushMatrix();
+		glTranslated(-scene2_scrollX, 0, 0);
+		if (frame < 500 || rand() < RAND_MAX / 10)
+		{
+			spotlight(2 * SCREEN_WIDTH / 5 - 200, SCREEN_HEIGHT, 100, 200);
+			spotlight(3 * SCREEN_WIDTH / 5, SCREEN_HEIGHT, 100, 200);
+			spotlight(4 * SCREEN_WIDTH / 5 + 200, SCREEN_HEIGHT, 100, 200);
+		}
 		glPopMatrix();
 	}
 }
