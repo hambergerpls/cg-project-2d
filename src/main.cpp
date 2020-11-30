@@ -1062,7 +1062,7 @@ void scene_9()
 	{
 		//red
 		glColor3ub(197, 17, 17);
-		renderSpacedBitmapString(1000, 450, GLUT_BITMAP_HELVETICA_18, "Yellow killed red.");
+		renderSpacedBitmapString(1000, 450, GLUT_BITMAP_HELVETICA_18, "Yellow killed Blue.");
 	}
 	if (frame >= 3090 && frame < 3150)
 	{
