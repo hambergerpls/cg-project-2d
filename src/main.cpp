@@ -1,4 +1,18 @@
 
+/* 
+///////////////////////////////////////////////////
+This work is licensed under MIT license
+This project is for KT34303 - Computer Graphics course of Universiti Malaysia Sabah
+Authors:
+Lee Kim Hao
+Tan Mei Jun
+Nizam Bin Nordin
+Kennedy Gregory Mojuntin
+Ahmad Farhan Bin Ahmad Zaki
+Muhammad Danial Aiman Bin Mohd Hanif 
+///////////////////////////////////////////////////
+*/
+
 #include <stdlib.h>
 #include <iostream>
 #include <math.h>
